@@ -35,7 +35,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('users/{user}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{user}', 'UserController@update');
-    Route::delete('users/{user}', 'UserController@delete');
+    Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
 
     // Role Routes
     // {role} i.p.v {id} zet ID automatisch om naar een role. Indien role niet bestaat -> 404
