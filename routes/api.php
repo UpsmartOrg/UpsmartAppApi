@@ -28,14 +28,15 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
 
         //Routes waarvoor gebruiker ingelogd moet zijn
+        Route::get('users/{user}', 'UserController@show');
+        Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
     });
     // User Routes
     // {user} i.p.v {id} zet ID automatisch om naar een user. Indien user niet bestaat -> 404
     Route::get('users', 'UserController@index');
-    Route::get('users/{user}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{user}', 'UserController@update');
-    Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
+
 
     // Role Routes
     // {role} i.p.v {id} zet ID automatisch om naar een role. Indien role niet bestaat -> 404

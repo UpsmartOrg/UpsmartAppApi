@@ -26,6 +26,7 @@ class ApiAuthController extends Controller
                 'password.min'   => ':attribute moet minstens 8 karakters lang zijn',
                 'max'            => ':attribute mag maximum 255 karakters lang zijn',
                 'string'         => ':attribute moet een string zijn',
+                'email'          => ':attribute moet een e-mail zijn',
                 'unique'         => ':attribute moet uniek zijn binnen rollen',
                 'confirmed'      => ':attribute is niet gecomfirmeerd'
             ]);
@@ -48,12 +49,11 @@ class ApiAuthController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'email' => 'required|string|email|max:255',
-                'password' => 'required|string|min:6',
+                'password' => 'required|string|max:255',
             ],
             [
                 'required'       => 'Je moet :attribute invullen',
-                'min'            => ':attribute moet minstens 2 karakters lang zijn',
-                'password.min'   => ':attribute moet minstens 8 karakters lang zijn',
+                'email'       => ':attribute moet een email zijn',
                 'max'            => ':attribute mag maximum 255 karakters lang zijn',
                 'string'         => ':attribute moet een string zijn',
                 'unique'         => ':attribute moet uniek zijn binnen rollen',
