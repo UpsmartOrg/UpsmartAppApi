@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveyTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,11 @@ class CreateSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::create('survey', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
             $table->timestamps();
-
-            //Foreign keys
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('user')
-                ->onDelete('restrict');
         });
     }
 
@@ -37,6 +28,6 @@ class CreateSurveyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('survey');
+        Schema::dropIfExists('roles');
     }
 }

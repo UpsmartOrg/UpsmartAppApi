@@ -24,5 +24,4 @@ class ConductedSurvey extends Model
         'survey_id', 'conducted_on',
     ];
 
-    protected $table = 'conducted_survey';
 }

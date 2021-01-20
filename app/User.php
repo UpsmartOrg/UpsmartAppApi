@@ -56,5 +56,4 @@ class User extends Authenticatable
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
 
-    protected $table = 'user';
 }

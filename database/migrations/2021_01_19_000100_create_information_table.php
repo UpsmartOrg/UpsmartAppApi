@@ -23,7 +23,7 @@ class CreateInformationTable extends Migration
             //Foreign keys
             $table->foreign('user_id')
                 ->references('id')
-                ->on('user')
+                ->on('users')
                 ->onDelete('restrict');
         });
     }

@@ -23,5 +23,4 @@ class OpenQuestion extends Model
         'survey_id', 'title', 'description', 'rows',
     ];
 
-    protected $table = 'open_question';
 }

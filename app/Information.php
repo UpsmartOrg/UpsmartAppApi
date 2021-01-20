@@ -15,5 +15,5 @@ class Information extends Model
         'title', 'body', 'user_id'
     ];
 
-    protected $table = 'information';
+    //protected $table = 'information';
 }

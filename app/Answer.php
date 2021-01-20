@@ -15,10 +15,6 @@ class Answer extends Model
         return $this->hasMany('App\OpenQuestion');
     }
 
-    public function dropdownItems() {
-        return $this->hasMany('App\DropdownItem');
-    }
-
     public function multiplechoiceItems() {
         return $this->hasMany('App\MultiplechoiceItem');
     }
@@ -29,8 +25,7 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'conducted_survey_id', 'open_question_id', 'open_question_answer', 'dropdown_item_id', 'multiplechoice_item_id',
+        'conducted_survey_id', 'open_question_id', 'open_question_answer', 'multiplechoice_item_id',
     ];
 
-    protected $table = 'answer';
 }

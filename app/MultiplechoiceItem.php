@@ -24,5 +24,4 @@ class MultiplechoiceItem extends Model
         'multiplechoice_question_id', 'title',
     ];
 
-    protected $table = 'multiplechoice_item';
 }

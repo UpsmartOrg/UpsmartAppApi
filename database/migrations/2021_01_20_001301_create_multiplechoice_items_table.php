@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConductedSurveyTable extends Migration
+class CreateMultiplechoiceItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateConductedSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::create('conducted_survey', function (Blueprint $table) {
+        Schema::create('multiplechoice_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('survey_id');
-            $table->dateTime('conducted_on');
+            $table->unsignedBigInteger('multiplechoice_question_id');
+            $table->string('title');
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('survey_id')
+            $table->foreign('multiplechoice_question_id')
                 ->references('id')
-                ->on('survey')
+                ->on('multiplechoice_questions')
                 ->onDelete('restrict');
         });
     }
@@ -34,6 +34,6 @@ class CreateConductedSurveyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conducted_survey');
+        Schema::dropIfExists('multiplechoice_items');
     }
 }

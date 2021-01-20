@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDropdownItemTable extends Migration
+class CreateMultiplechoiceQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateDropdownItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('dropdown_item', function (Blueprint $table) {
+        Schema::create('multiplechoice_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('dropdown_question_id');
+            $table->unsignedBigInteger('survey_id');
             $table->string('title');
+            $table->string('description');
+            $table->boolean('is_dropdown')->default(false);
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('dropdown_question_id')
+            $table->foreign('survey_id')
                 ->references('id')
-                ->on('dropdown_question')
+                ->on('surveys')
                 ->onDelete('restrict');
         });
     }
@@ -34,6 +36,6 @@ class CreateDropdownItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dropdown_item');
+        Schema::dropIfExists('multiplechoice_questions');
     }
 }

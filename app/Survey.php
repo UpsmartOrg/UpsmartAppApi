@@ -15,10 +15,6 @@ class Survey extends Model
         return $this->hasMany('App\OpenQuestion');
     }
 
-    public function dropdownQuestions() {
-        return $this->hasMany('App\DropdownQuestion');
-    }
-
     public function multiplechoiceQuestions() {
         return $this->hasMany('App\MultiplechoiceQuestion');
     }
@@ -36,5 +32,4 @@ class Survey extends Model
         'user_id', 'name', 'description', 'start_date', 'end_date',
     ];
 
-    protected $table = 'survey';
 }

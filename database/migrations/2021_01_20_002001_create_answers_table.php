@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswerTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,34 +13,28 @@ class CreateAnswerTable extends Migration
      */
     public function up()
     {
-        Schema::create('answer', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('conducted_survey_id');
             $table->unsignedBigInteger('open_question_id')->nullable();
             $table->string('open_question_answer')->nullable();
-            $table->unsignedBigInteger('dropdown_item_id')->nullable();
             $table->unsignedBigInteger('multiplechoice_item_id')->nullable();
             $table->timestamps();
 
             //Foreign keys
             $table->foreign('conducted_survey_id')
                 ->references('id')
-                ->on('conducted_survey')
+                ->on('conducted_surveys')
                 ->onDelete('restrict');
 
             $table->foreign('open_question_id')
                 ->references('id')
-                ->on('open_question')
-                ->onDelete('restrict');
-
-            $table->foreign('dropdown_item_id')
-                ->references('id')
-                ->on('dropdown_item')
+                ->on('open_questions')
                 ->onDelete('restrict');
 
             $table->foreign('multiplechoice_item_id')
                 ->references('id')
-                ->on('multiplechoice_item')
+                ->on('multiplechoice_items')
                 ->onDelete('restrict');
         });
     }
@@ -52,6 +46,6 @@ class CreateAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers');
     }
 }
