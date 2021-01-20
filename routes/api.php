@@ -28,27 +28,24 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
 
         //Routes waarvoor gebruiker ingelogd moet zijn
-        Route::get('users/{user}', 'UserController@show');
-        Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
     });
+
     // User Routes
     // {user} i.p.v {id} zet ID automatisch om naar een user. Indien user niet bestaat -> 404
-    Route::get('users', 'UserController@index');
-    Route::post('users', 'UserController@store');
-    Route::put('users/{user}', 'UserController@update');
+    Route::get('user', 'UserController@index');
+    Route::get('user/{user}', 'UserController@show');
+    Route::post('user', 'UserController@store');
+    Route::put('user/{user}', 'UserController@update');
+    Route::delete('user/{user}', 'UserController@delete')->middleware('api.admin');
 
 
     // Role Routes
     // {role} i.p.v {id} zet ID automatisch om naar een role. Indien role niet bestaat -> 404
-    Route::get('roles', 'RoleController@index');
-    Route::get('roles/{role}', 'RoleController@show');
-    Route::post('roles', 'RoleController@store');
-    Route::put('roles/{role}', 'RoleController@update');
-    Route::delete('roles/{role}', 'RoleController@delete');
-
-//    Route::middleware('auth:api')->get('/user', function (Request $request) {
-//        return $request->user();
-//    });
+    Route::get('role', 'RoleController@index');
+    Route::get('role/{role}', 'RoleController@show');
+    Route::post('role', 'RoleController@store');
+    Route::put('role/{role}', 'RoleController@update');
+    Route::delete('role/{role}', 'RoleController@delete');
 });
 
 

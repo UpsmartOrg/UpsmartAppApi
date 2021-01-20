@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    public function user() {
+    //Eloquent bindings
+    public function users() {
         return $this->hasMany('App\User');
     }
 
@@ -18,4 +19,6 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+
+    protected $table = 'role';
 }

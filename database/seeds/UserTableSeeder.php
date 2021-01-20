@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //Seeder for test users
-        DB::table('users')->insert(
+        DB::table('user')->insert(
             [
                 [
                     'email' => 'user@test.be',

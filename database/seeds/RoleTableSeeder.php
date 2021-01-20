@@ -11,8 +11,8 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        //Seeder for test users
-        DB::table('roles')->insert(
+        //Seeder for test roles
+        DB::table('role')->insert(
             [
                 [
                     'name' => 'Gebruiker'
