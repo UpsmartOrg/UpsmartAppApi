@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateMultiplechoiceQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('multiplechoice_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->unsignedBigInteger('role_id')->default(1);
-            $table->rememberToken();
+            $table->unsignedBigInteger('survey_id');
+            $table->string('title');
+            $table->string('description');
+            $table->boolean('is_dropdown')->default(false);
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('role_id')
+            $table->foreign('survey_id')
                 ->references('id')
-                ->on('roles')
+                ->on('surveys')
                 ->onDelete('restrict');
         });
     }
@@ -39,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('multiplechoice_questions');
     }
 }

@@ -14,6 +14,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class,
             UserTableSeeder::class,
+            InformationTableSeeder::class,
+            SurveyTableSeeder::class,
+            OpenQuestionTableSeeder::class,
+            MultiplechoiceQuestionTableSeeder::class,
+            MultiplechoiceItemTableSeeder::class,
+            ConductedSurveyTableSeeder::class,
+            AnswerTableSeeder::class
         ]);
     }
 }

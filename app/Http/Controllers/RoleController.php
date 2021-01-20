@@ -22,14 +22,15 @@ class RoleController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'name'                => ['required', 'min:2', 'max:255', 'string', 'unique:roles']
+                'name'                  => ['required', 'min:2', 'max:255', 'string', 'unique:roles'],
+                'description'           => ['required', 'min:2', 'max:255', 'string'],
             ],
             [
-                'required'       => 'Je moet :attribute invullen',
-                'min'            => ':attribute moet minsters 2 karakters lang zijn',
-                'max'            => ':attribute mag maximum 255 karakters lang zijn',
-                'string'         => ':attribute moet een string zijn',
-                'unique'         => ':attribute moet uniek zijn binnen rollen'
+                'required'              => 'Je moet :attribute invullen',
+                'min'                   => ':attribute moet minsters 2 karakters lang zijn',
+                'max'                   => ':attribute mag maximum 255 karakters lang zijn',
+                'string'                => ':attribute moet een string zijn',
+                'unique'                => ':attribute moet uniek zijn binnen rollen',
             ]);
         //On validation fail
         if ($validator->fails())
@@ -46,14 +47,15 @@ class RoleController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'name'                => ['required', 'min:2', 'max:255', 'string', 'unique:roles' .$role->id]
+                'name'                => ['required', 'min:2', 'max:255', 'string', 'unique:roles' .$role->id],
+                'description'           => ['required', 'min:2', 'max:255', 'string'],
             ],
             [
                 'required'       => 'Je moet :attribute invullen',
                 'min'            => ':attribute moet minsters 2 karakters lang zijn',
                 'max'            => ':attribute mag maximum 255 karakters lang zijn',
                 'string'         => ':attribute moet een string zijn',
-                'unique'         => ':attribute moet uniek zijn binnen rollen'
+                'unique'         => ':attribute moet uniek zijn binnen rollen',
             ]);
         //On validation fail
         if ($validator->fails())
