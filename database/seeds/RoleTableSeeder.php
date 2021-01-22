@@ -11,7 +11,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        //Seeder for testdata: roles
+        //Seeder for testdata:nam roles
         DB::table('roles')->insert(
             [
                 [
@@ -30,10 +30,10 @@ class RoleTableSeeder extends Seeder
                     'name' => 'Extern',
                     'description' => 'Externe werknemer'
                 ],
-                [
-                    'name' => 'Administrator',
-                    'description' => 'Administrator van het systeem'
-                ],
+//                [
+//                    'name' => 'Administrator',
+//                    'description' => 'Administrator van het systeem'
+//                ],
             ]);
     }
 }

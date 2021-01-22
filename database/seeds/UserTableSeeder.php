@@ -15,39 +15,54 @@ class UserTableSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'email' => 'aa@test.be',
+                    'email' => 'ArnoA@herentals.be',
+                    'username' => 'arno.a',
                     'first_name' => 'Arno',
                     'last_name' => 'Arkens',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 1
+                    'role_id' => 1,
+                    'is_admin' => false,
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
-                    'email' => 'bb@test.be',
+                    'email' => 'BarryB@herentals.be',
+                    'username' => 'barry.b',
                     'first_name' => 'Barry',
                     'last_name' => 'Bostols',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 2
+                    'role_id' => 2,
+                    'is_admin' => false,
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
-                    'email' => 'cc@test.be',
+                    'email' => 'ConnieC@herentals.be',
+                    'username' => 'connie.c',
                     'first_name' => 'Connie',
                     'last_name' => 'Cannaerts',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 3
+                    'role_id' => 3,
+                    'is_admin' => false,
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
-                    'email' => 'dd@test.be',
+                    'email' => 'DirkD@herentals.be',
+                    'username' => 'dirk.d',
                     'first_name' => 'Dirk',
                     'last_name' => 'Dockers',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 4
+                    'role_id' => 4,
+                    'is_admin' => false,
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
-                    'email' => 'ee@test.be',
+                    'email' => 'EricaE@herentals.be',
+                    'username' => 'erica.e',
                     'first_name' => 'Erica',
                     'last_name' => 'Erentals',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 5
+                    'role_id' => 2,
+                    'is_admin' => true,
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
             ]);
     }

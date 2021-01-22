@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SurveyController extends Controller
 {
@@ -15,6 +16,11 @@ class SurveyController extends Controller
     public function show(Survey $survey)
     {
         return $survey;
+    }
+
+    public function showComplete(Survey $survey)
+    {
+        return $survey->loadMissing(['openQuestions', 'multiplechoiceQuestions']);
     }
 
     public function store(Request $request)

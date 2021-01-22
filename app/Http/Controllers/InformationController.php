@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InformationController extends Controller
 {

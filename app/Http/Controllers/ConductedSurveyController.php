@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ConductedSurvey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ConductedSurveyController extends Controller
 {

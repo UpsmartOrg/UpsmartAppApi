@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AnswerController extends Controller
 {
