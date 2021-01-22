@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MultiplechoiceQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MultiplechoiceQuestionController extends Controller
 {

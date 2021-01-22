@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MultiplechoiceItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MultiplechoiceItemController extends Controller
 {

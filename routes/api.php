@@ -39,10 +39,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::delete('roles/{role}', 'RoleController@delete');
 
     // {object} i.p.v {id} zet ID automatisch om naar een object. Indien object niet bestaat -> 404
+    // localhost:8000/api/users/1 -> returns user met ID 1, als hij niet bestaat returnt het 404
 
     // Users Routes
     Route::get('users', 'UserController@index');
+    Route::get('users/withrole', 'UserController@indexRole');
     Route::get('users/{user}', 'UserController@show');
+    Route::get('users/withrole/{user}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{user}', 'UserController@update');
     Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
@@ -57,6 +60,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // Surveys Routes
     Route::get('surveys', 'SurveyController@index');
     Route::get('surveys/{survey}', 'SurveyController@show');
+    Route::get('surveys/complete/{survey}', 'SurveyController@showComplete');
     Route::post('surveys', 'SurveyController@store');
     Route::put('surveys/{survey}', 'SurveyController@update');
     Route::delete('surveys/{survey}', 'SurveyController@delete');

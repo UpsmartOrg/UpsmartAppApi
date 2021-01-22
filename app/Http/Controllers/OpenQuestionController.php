@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OpenQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OpenQuestionController extends Controller
 {
