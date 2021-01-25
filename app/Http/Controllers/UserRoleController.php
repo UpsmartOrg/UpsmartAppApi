@@ -22,8 +22,8 @@ class UserRoleController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'user_id'                   => ['required', 'integer', 'exists:users'],
-                'role_id'                   => ['required', 'integer', 'exists:roles']
+                'user_id'                   => ['required', 'integer', 'exists:users,id'],
+                'role_id'                   => ['required', 'integer', 'exists:roles,id']
             ],
             [
                 'required'                  => 'Je moet :attribute invullen',
@@ -45,8 +45,8 @@ class UserRoleController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'user_id'                   => ['required', 'integer', 'exists:users'],
-                'role_id'                   => ['required', 'integer', 'exists:roles']
+                'user_id'                   => ['required', 'integer', 'exists:users,id'],
+                'role_id'                   => ['required', 'integer', 'exists:roles,id']
             ],
             [
                 'required'                  => 'Je moet :attribute invullen',
