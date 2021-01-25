@@ -20,7 +20,7 @@ class OpenQuestion extends Model
      * @var array
      */
     protected $fillable = [
-        'survey_id', 'title', 'description', 'rows',
+        'survey_id', 'title', 'description', 'rows', 'question_order'
     ];
 
 }

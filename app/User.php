@@ -12,8 +12,8 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
 
     //Eloquent bindings
-    public function role() {
-        return $this->belongsTo('App\Role');
+    public function userRoles() {
+        return $this->hasMany('App\UserRole');
     }
 
     public function information() {
@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'username', 'password', 'role_id', 'is_admin'
+        'first_name', 'last_name', 'email', 'username', 'password', 'is_extern'
     ];
 
     /**

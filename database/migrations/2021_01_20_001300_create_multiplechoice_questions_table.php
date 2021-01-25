@@ -16,9 +16,10 @@ class CreateMultiplechoiceQuestionsTable extends Migration
         Schema::create('multiplechoice_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('survey_id');
+            $table->integer('question_order');
             $table->string('title');
             $table->string('description');
-            $table->boolean('is_dropdown')->default(false);
+            $table->boolean('multiple_answers')->default(false);
             $table->timestamps();
 
             //Foreign keys

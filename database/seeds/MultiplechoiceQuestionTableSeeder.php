@@ -16,21 +16,24 @@ class MultiplechoiceQuestionTableSeeder extends Seeder
             [
                 [
                     'survey_id' => 1,
+                    'question_order' => 1,
                     'title' => 'Hebt u vaak problemen om parkeerplaats te vinden',
                     'description' => 'Wat vragen over de parkeerplaats binnen Herentals',
-                    'is_dropdown' => false
+                    'multiple_answers' => false
                 ],
                 [
                     'survey_id' => 2,
+                    'question_order' => 2,
                     'title' => 'Met hoeveel verschillende mensen komt u in contact',
                     'description' => 'Enquête is anoniem, deze info is niet incriminerend',
-                    'is_dropdown' => true
+                    'multiple_answers' => true
                 ],
                 [
                     'survey_id' => 3,
+                    'question_order' => 1,
                     'title' => 'Hoe goed scoort Herentals met de huidige aanbieding van activiteiten',
                     'description' => '',
-                    'is_dropdown' => false
+                    'multiple_answers' => false
                 ],
             ]);
     }

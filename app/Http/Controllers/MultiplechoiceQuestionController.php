@@ -25,7 +25,7 @@ class MultiplechoiceQuestionController extends Controller
                 'survey_id'                     => ['required', 'integer', 'exists:surveys,id'],
                 'title'                         => ['required', 'min:6', 'max:255', 'string'],
                 'description'                   => ['required', 'min:6', 'max:255', 'string'],
-                'is_dropdown'                   => ['boolean'],
+                'multiple_answers'              => ['boolean'],
             ],
             [
                 'required'                      => ':attribute moet ingevuld zijn',
