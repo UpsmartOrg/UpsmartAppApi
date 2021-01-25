@@ -21,12 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="295ba285-1a12-4477-afef-da82948298b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InformationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +219,8 @@
       <workItem from="1611129404573" duration="24399000" />
       <workItem from="1611304101360" duration="9089000" />
       <workItem from="1611560720026" duration="2791000" />
-      <workItem from="1611567790011" duration="739000" />
+      <workItem from="1611567790011" duration="828000" />
+      <workItem from="1611570117303" duration="1463000" />
     </task>
     <servers />
   </component>
@@ -232,47 +238,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1611155409671">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611155409671" />
-    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611562833277">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611562833277" />
-    <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1611131408039">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1060" y="454" key="FileChooserDialogImpl/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611131408039" />
-    <state width="2517" height="401" key="GridCell.Tab.0.bottom" timestamp="1611071736107">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.bottom/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611071736107" />
-    <state width="2517" height="401" key="GridCell.Tab.0.center" timestamp="1611071736106">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.center/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611071736106" />
-    <state width="2517" height="401" key="GridCell.Tab.0.left" timestamp="1611071736106">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.left/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611071736106" />
-    <state width="2517" height="401" key="GridCell.Tab.0.right" timestamp="1611071736106">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.right/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611071736106" />
-    <state x="1044" y="422" key="NewPhpClassDialog" timestamp="1611061563648">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1044" y="422" key="NewPhpClassDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611061563648" />
-    <state x="1048" y="402" key="RollbackChangesDialog" timestamp="1611217223791">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1048" y="402" key="RollbackChangesDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611217223791" />
-    <state x="781" y="344" key="SettingsEditor" timestamp="1611061254594">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="781" y="344" key="SettingsEditor/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611061254594" />
   </component>
 </project>

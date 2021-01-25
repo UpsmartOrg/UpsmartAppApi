@@ -13,6 +13,11 @@ class InformationController extends Controller
         return Information::all();
     }
 
+    public function indexUser()
+    {
+        return Information::all()->loadMissing('user');
+    }
+
     public function show(Information $information)
     {
         return $information;
