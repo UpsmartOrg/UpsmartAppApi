@@ -16,18 +16,21 @@ class OpenQuestionTableSeeder extends Seeder
             [
                 [
                     'survey_id' => 1,
+                    'question_order' => 2,
                     'title' => 'Waar in Herentals parkeert u uw auto?',
                     'description' => 'U hoeft geen straatnamen te geven (maar mag wel), een algemene locatie is duidelijk',
                     'rows' => 1
                 ],
                 [
                     'survey_id' => 2,
+                    'question_order' => 1,
                     'title' => 'Hoe voelt u zich bij de huidige maatregelen',
                     'description' => '',
                     'rows' => 5
                 ],
                 [
                     'survey_id' => 3,
+                    'question_order' => 2,
                     'title' => 'Welke events zou u graag meer zien binnen Herentals',
                     'description' => 'bijvoorbeeld: festivals, activiteiten, beurzen, ...',
                     'rows' => 10

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOpenQuestionsTable extends Migration
+class CreateUserRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateOpenQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('open_questions', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('survey_id');
-            $table->integer('question_order');
-            $table->string('title');
-            $table->string('description');
-            $table->integer('rows');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('role_id');
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('survey_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('surveys')
+                ->on('users')
+                ->onDelete('restrict');
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
                 ->onDelete('restrict');
         });
     }
@@ -37,6 +38,6 @@ class CreateOpenQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('open_questions');
+        Schema::dropIfExists('user_roles');
     }
 }

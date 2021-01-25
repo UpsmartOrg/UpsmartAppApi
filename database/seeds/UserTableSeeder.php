@@ -20,8 +20,7 @@ class UserTableSeeder extends Seeder
                     'first_name' => 'Arno',
                     'last_name' => 'Arkens',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 1,
-                    'is_admin' => false,
+                    'is_extern' => false,
                     'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
@@ -30,8 +29,7 @@ class UserTableSeeder extends Seeder
                     'first_name' => 'Barry',
                     'last_name' => 'Bostols',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 2,
-                    'is_admin' => false,
+                    'is_extern' => false,
                     'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
@@ -40,8 +38,7 @@ class UserTableSeeder extends Seeder
                     'first_name' => 'Connie',
                     'last_name' => 'Cannaerts',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 3,
-                    'is_admin' => false,
+                    'is_extern' => false,
                     'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
@@ -50,8 +47,7 @@ class UserTableSeeder extends Seeder
                     'first_name' => 'Dirk',
                     'last_name' => 'Dockers',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 4,
-                    'is_admin' => false,
+                    'is_extern' => true,
                     'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
                 [
@@ -60,8 +56,7 @@ class UserTableSeeder extends Seeder
                     'first_name' => 'Erica',
                     'last_name' => 'Erentals',
                     'password' => Hash::make('testtest'),
-                    'role_id' => 2,
-                    'is_admin' => true,
+                    'is_extern' => false,
                     'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
                 ],
             ]);

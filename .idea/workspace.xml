@@ -21,17 +21,19 @@
   <component name="ChangeListManager">
     <list default="true" id="295ba285-1a12-4477-afef-da82948298b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConductedSurveyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConductedSurveyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InformationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceItemController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceQuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceQuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpenQuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpenQuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MultiplechoiceQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MultiplechoiceQuestion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/OpenQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OpenQuestion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_000002_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_000002_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_000003_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_000004_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_001100_create_open_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_001100_create_open_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_001300_create_multiplechoice_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_001300_create_multiplechoice_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/MultiplechoiceQuestionTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MultiplechoiceQuestionTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/OpenQuestionTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/OpenQuestionTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/RoleTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
@@ -46,6 +48,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="jg-specific-routes" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -215,7 +222,8 @@
       <updated>1611045565736</updated>
       <workItem from="1611045567045" duration="21892000" />
       <workItem from="1611129404573" duration="24399000" />
-      <workItem from="1611304101360" duration="7927000" />
+      <workItem from="1611304101360" duration="9089000" />
+      <workItem from="1611560720026" duration="2791000" />
     </task>
     <servers />
   </component>
@@ -239,10 +247,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611155409671" />
-    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611152007772">
+    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611562833277">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611152007772" />
+    <state x="1010" y="454" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1611562833277" />
     <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1611131408039">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

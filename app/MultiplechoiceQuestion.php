@@ -21,7 +21,7 @@ class MultiplechoiceQuestion extends Model
      * @var array
      */
     protected $fillable = [
-        'survey_id', 'title', 'description', 'is_dropdown'
+        'survey_id', 'title', 'description', 'multiple_answers', 'question_order'
     ];
 
 }

@@ -4,11 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class UserRole extends Model
 {
     //Eloquent bindings
-    public function userRoles() {
-        return $this->hasMany('App\UserRole');
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Role');
     }
 
     /**
@@ -17,7 +21,6 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description',
+        'user_id', 'role_id',
     ];
-
 }

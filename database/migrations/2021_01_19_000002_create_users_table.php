@@ -21,16 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('role_id')->default(1);
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_extern')->default(false);
             $table->rememberToken();
             $table->timestamps();
-
-            //Foreign keys
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onDelete('restrict');
         });
     }
 

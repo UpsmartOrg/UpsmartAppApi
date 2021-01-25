@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function indexRole()
     {
-        return User::all()->loadMissing('role');
+        return User::all()->loadMissing('userRoles')->loadMissing('userRoles.role');
     }
 
     public function show(User $user)
@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function showRole(User $user)
     {
-        return $user->loadMissing('role');
+        return $user->loadMissing('userRoles');
     }
 
     public function store(Request $request)
@@ -39,7 +39,6 @@ class UserController extends Controller
                 'email'                     => ['required', 'min:2', 'max:255', 'email', 'unique:users,email'],
                 'username'                  => ['required', 'min:2', 'max:255', 'string', 'unique:users,username'],
                 'password'                  => ['required', 'min:8', 'max:255', 'string', 'confirmed'],
-                'role_id'                   => ['required', 'integer', 'exists:roles,id'],
             ],
             [
                 'required'                  => 'Je moet :attribute invullen',
@@ -47,7 +46,7 @@ class UserController extends Controller
                 'password.min'              => ':attribute moet minstens 8 karakters lang zijn',
                 'max'                       => ':attribute mag maximum 255 karakters lang zijn',
                 'string'                    => ':attribute moet een string zijn',
-                'email'             => ':attribute moet een geldig email zijn',
+                'email'                     => ':attribute moet een geldig email zijn',
                 'unique'                    => ':attribute is al in gebruik',
                 'confirmed'                 => ':attribute is niet gecomfirmeerd'
             ]);
@@ -71,7 +70,6 @@ class UserController extends Controller
                 'last_name'                 => ['required', 'min:2', 'max:255', 'string'],
                 'email'                     => ['required', 'min:2', 'max:255', 'email', 'unique:users,email,' .$user->id],
                 'username'                  => ['required', 'min:2', 'max:255', 'string', 'unique:users,username,' .$user->id],
-                'role_id'                   => ['required', 'integer', 'exists:roles,id'],
             ],
             [
                 'required'                  => 'Je moet :attribute invullen',
