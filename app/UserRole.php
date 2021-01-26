@@ -23,4 +23,8 @@ class UserRole extends Model
     protected $fillable = [
         'user_id', 'role_id',
     ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
 }

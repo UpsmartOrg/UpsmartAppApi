@@ -20,7 +20,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Authentication routes (public)
     Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
-    Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
 
     // Authenticated routes
     Route::middleware('auth:api')->group(function () {
@@ -31,7 +30,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     });
 
     // Roles Routes
-    // {role} i.p.v {id} zet ID automatisch om naar een role. Indien role niet bestaat -> 404
     Route::get('roles', 'RoleController@index');
     Route::get('roles/{role}', 'RoleController@show');
     Route::post('roles', 'RoleController@store');
@@ -43,12 +41,14 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Users Routes
     Route::get('users', 'UserController@index');
-    Route::get('users/withrole', 'UserController@indexRole');
+    Route::get('users/withroles', 'UserController@indexWithRoles');
     Route::get('users/{user}', 'UserController@show');
-    Route::get('users/withrole/{user}', 'UserController@show');
+    Route::get('users/withroles/{user}', 'UserController@showWithRoles');
     Route::post('users', 'UserController@store');
-    Route::put('users/{user}', 'UserController@update');
-    Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
+    Route::post('users/withroles', 'UserController@storeWithRoles');
+    Route::put('users/{user}', 'UserController@update')->middleware('api.admin');
+    Route::put('users/withroles/{user}', 'UserController@updateWithRoles');
+    Route::delete('users/{user}', 'UserController@delete');
 
     // UserRoles Routes
     Route::get('userroles', 'UserRoleController@index');
