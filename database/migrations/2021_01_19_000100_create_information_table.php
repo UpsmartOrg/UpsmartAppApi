@@ -17,7 +17,7 @@ class CreateInformationTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('body');
+            $table->longText('body');
             $table->timestamps();
 
             //Foreign keys

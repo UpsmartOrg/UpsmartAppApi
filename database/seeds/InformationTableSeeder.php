@@ -16,28 +16,18 @@ class InformationTableSeeder extends Seeder
             [
                 [
                     'user_id' => 1,
-                    'title' => 'Arno Arkens werkt bij de groendienst',
-                    'body' => 'Heeft toegang tot de info over vuilbakken'
+                    'title' => 'Corona info',
+                    'body' => 'Lorem ipsum'
                 ],
                 [
                     'user_id' => 2,
-                    'title' => 'Barry Bostols is een participant',
-                    'body' => 'Heeft toegang tot participaties?'
+                    'title' => 'Start aanleg fietsweg',
+                    'body' => 'Lorem ipsum'
                 ],
                 [
                     'user_id' => 3,
-                    'title' => 'Connie Cannaerts werkt bij communicatie',
-                    'body' => 'Heeft toegang tot het aanmaken en bewerken van enquetes'
-                ],
-                [
-                    'user_id' => 4,
-                    'title' => 'Dirk Dockers werkt als externe',
-                    'body' => 'Heeft toegang tot verschillende functies voor onderhoud'
-                ],
-                [
-                    'user_id' => 5,
-                    'title' => 'Erica Erentals is admin',
-                    'body' => 'Heeft toegang tot alles'
+                    'title' => 'Werken in het centrum',
+                    'body' => 'Lorem ipsum'
                 ],
             ]);
     }

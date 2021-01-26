@@ -14,14 +14,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class,
             UserTableSeeder::class,
-            UserRoleTableSeeder::class,
             InformationTableSeeder::class,
             SurveyTableSeeder::class,
             OpenQuestionTableSeeder::class,
             MultiplechoiceQuestionTableSeeder::class,
             MultiplechoiceItemTableSeeder::class,
             ConductedSurveyTableSeeder::class,
-            AnswerTableSeeder::class
+            AnswerTableSeeder::class,
+            UserRoleTableSeeder::class,
         ]);
     }
 }
