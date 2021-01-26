@@ -20,7 +20,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Authentication routes (public)
     Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
-    Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
 
     // Authenticated routes
     Route::middleware('auth:api')->group(function () {
