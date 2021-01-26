@@ -43,13 +43,14 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Users Routes
     Route::get('users', 'UserController@index');
-    Route::get('users/withrole', 'UserController@indexRole');
+    Route::get('users/withroles', 'UserController@indexWithRoles');
     Route::get('users/{user}', 'UserController@show');
-    Route::get('users/withrole/{user}', 'UserController@showRole');
+    Route::get('users/withroles/{user}', 'UserController@showWithRoles');
     Route::post('users', 'UserController@store');
-    Route::put('users/{user}', 'UserController@update');
+    Route::post('users/withroles', 'UserController@storeWithRoles');
+    Route::put('users/{user}', 'UserController@update')->middleware('api.admin');
     Route::put('users/withroles/{user}', 'UserController@updateWithRoles');
-    Route::delete('users/{user}', 'UserController@delete')->middleware('api.admin');
+    Route::delete('users/{user}', 'UserController@delete');
 
     // UserRoles Routes
     Route::get('userroles', 'UserRoleController@index');

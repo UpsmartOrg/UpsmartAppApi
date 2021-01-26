@@ -16,7 +16,7 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function indexRole()
+    public function indexWithRoles()
     {
         return User::all()->loadMissing('userRoles')->loadMissing('userRoles.role');
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
         return $user;
     }
 
-    public function showRole(User $user)
+    public function showWithRoles(User $user)
     {
         return $user->loadMissing('userRoles');
     }
@@ -59,6 +59,46 @@ class UserController extends Controller
 
         $request['password']=Hash::make($request['password']);
         $user = User::create($request->all());
+
+        return response()->json($user, 201);
+    }
+
+    public function storeWithRoles(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'first_name'                => ['required', 'min:2', 'max:255', 'string'],
+                'last_name'                 => ['required', 'min:2', 'max:255', 'string'],
+                'email'                     => ['required', 'min:2', 'max:255', 'email', 'unique:users,email'],
+                'username'                  => ['required', 'min:2', 'max:255', 'string', 'unique:users,username'],
+                'password'                  => ['required', 'min:8', 'max:255', 'string', 'confirmed'],
+            ],
+            [
+                'required'                  => 'Je moet :attribute invullen',
+                'min'                       => ':attribute moet minstens 2 karakters lang zijn',
+                'password.min'              => ':attribute moet minstens 8 karakters lang zijn',
+                'max'                       => ':attribute mag maximum 255 karakters lang zijn',
+                'string'                    => ':attribute moet een string zijn',
+                'email'                     => ':attribute moet een geldig email zijn',
+                'unique'                    => ':attribute is al in gebruik',
+                'confirmed'                 => ':attribute is niet gecomfirmeerd'
+            ]);
+        //On validation fail
+        if ($validator->fails())
+        {
+            return response(['errors'=>$validator->errors()->all()], 422);
+        }
+
+        $request['password']=Hash::make($request['password']);
+        $user = User::create($request->all());
+
+        //Loop through all user_roles in the request and add them as new userRole
+        foreach ($request->user_roles as $user_role) {
+            $newRole = new UserRole();
+            $newRole->user_id = $user->id;
+            $newRole->role_id = $user_role['role_id'];
+            $newRole->save();
+        }
 
         return response()->json($user, 201);
     }
@@ -142,6 +182,11 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
+        $userRoles = UserRole::where('user_id', $user->id)->get();
+        foreach ($userRoles as $userRole) {
+            $userRole->delete();
+        }
+
         $user->delete();
 
         return response()->json(null, 204);
