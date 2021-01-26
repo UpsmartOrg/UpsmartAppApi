@@ -18,7 +18,9 @@ class UserController extends Controller
 
     public function indexWithRoles()
     {
-        return User::all()->loadMissing('userRoles')->loadMissing('userRoles.role');
+        return User::all()
+            ->loadMissing('userRoles')
+            ->loadMissing('userRoles.role');
     }
 
     public function show(User $user)

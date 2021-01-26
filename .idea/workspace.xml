@@ -21,9 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="295ba285-1a12-4477-afef-da82948298b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ApiAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ApiAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_000003_create_user_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_000003_create_user_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserRole.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +212,8 @@
       <workItem from="1611129404573" duration="24399000" />
       <workItem from="1611304101360" duration="9089000" />
       <workItem from="1611560720026" duration="16893000" />
-      <workItem from="1611647292677" duration="1173000" />
+      <workItem from="1611647292677" duration="1198000" />
+      <workItem from="1611682553242" duration="4136000" />
     </task>
     <servers />
   </component>
