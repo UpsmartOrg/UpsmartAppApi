@@ -29,7 +29,7 @@ class InformationController extends Controller
             [
                 'user_id'               => ['required', 'integer', 'exists:users,id'],
                 'title'                 => ['required', 'min:2', 'max:255', 'string'],
-                'body'                  => ['required', 'min:2', 'max:255', 'string'],
+                'body'                  => ['required', 'min:2', 'string'],
             ],
             [
                 'required'              => 'Je moet :attribute invullen',
