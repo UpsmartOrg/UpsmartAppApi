@@ -13,6 +13,11 @@ class InformationController extends Controller
         return Information::all();
     }
 
+    public function indexUser()
+    {
+        return Information::all()->loadMissing('user');
+    }
+
     public function show(Information $information)
     {
         return $information;
@@ -24,7 +29,7 @@ class InformationController extends Controller
             [
                 'user_id'               => ['required', 'integer', 'exists:users,id'],
                 'title'                 => ['required', 'min:2', 'max:255', 'string'],
-                'body'                  => ['required', 'min:2', 'max:255', 'string'],
+                'body'                  => ['required', 'min:2', 'string'],
             ],
             [
                 'required'              => 'Je moet :attribute invullen',
@@ -51,7 +56,7 @@ class InformationController extends Controller
             [
                 'user_id'               => ['required', 'integer', 'exists:users,id'],
                 'title'                 => ['required', 'min:2', 'max:255', 'string'],
-                'body'                  => ['required', 'min:2', 'max:255', 'string'],
+                'body'                  => ['required', 'min:2', 'string'],
             ],
             [
                 'required'              => 'Je moet :attribute invullen',

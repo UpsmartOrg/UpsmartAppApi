@@ -59,6 +59,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Information Routes
     Route::get('information', 'InformationController@index');
+    Route::get('information/withUser', 'InformationController@indexUser');
     Route::get('information/{information}', 'InformationController@show');
     Route::post('information', 'InformationController@store');
     Route::put('information/{information}', 'InformationController@update');
