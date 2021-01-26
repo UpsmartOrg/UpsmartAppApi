@@ -30,7 +30,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     });
 
     // Roles Routes
-    // {role} i.p.v {id} zet ID automatisch om naar een role. Indien role niet bestaat -> 404
     Route::get('roles', 'RoleController@index');
     Route::get('roles/{role}', 'RoleController@show');
     Route::post('roles', 'RoleController@store');
