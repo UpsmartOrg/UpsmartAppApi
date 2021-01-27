@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Authentication routes (public)
-    Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+    Route::post('/login', 'Auth\AuthController@login')->name('login.api');
 
     // Authenticated routes
-    Route::middleware('auth:api')->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
         //Logging out
-        Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
+        Route::post('/logout', 'Auth\AuthController@logout')->name('logout.api');
 
         //Routes met authentication komen uiteindelijk hier
     });
