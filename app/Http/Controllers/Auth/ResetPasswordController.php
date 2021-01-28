@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -31,12 +32,21 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected function resetPassword($user, $password)
+    protected function resetPassword(Request $request)
     {
-        $user->password = Hash::make($password);
-        $user->save();
-        event(new PasswordReset($user));
+        $user = User::where('id', $request->user)->first();
+
+        if(Hash::check($request->oldPassword, $user->password)){
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            event(new PasswordReset($user));
+            return response($user, 200);
+        }
+
+        $response = ["message" =>'Wachtwoord wijzigen mislukt. Onjuist wachtwoord.'];
+        return response($response, 422);
     }
+
     protected function sendResetResponse(Request $request, $response)
     {
         $response = ['message' => "Password reset successful"];

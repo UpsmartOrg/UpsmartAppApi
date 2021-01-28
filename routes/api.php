@@ -29,6 +29,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         //Routes met authentication komen uiteindelijk hier
     });
 
+    Route::post('change-password', 'Auth\ResetPasswordController@resetPassword');
+
     // Roles Routes
     Route::get('roles', 'RoleController@index');
     Route::get('roles/{role}', 'RoleController@show');
@@ -46,7 +48,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('users/withroles/{user}', 'UserController@showWithRoles');
     Route::post('users', 'UserController@store');
     Route::post('users/withroles', 'UserController@storeWithRoles');
-    Route::put('users/{user}', 'UserController@update')->middleware('api.admin');
+    Route::put('users/{user}', 'UserController@update');
     Route::put('users/withroles/{user}', 'UserController@updateWithRoles');
     Route::delete('users/{user}', 'UserController@delete');
 
