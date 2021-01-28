@@ -31,11 +31,17 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected function resetPassword($user, $password)
+    protected function resetPassword($user, $oldPassword, $password)
     {
-        $user->password = Hash::make($password);
-        $user->save();
-        event(new PasswordReset($user));
+        if(Hash::check($oldPassword, $user->password)){
+            $user->password = Hash::make($password);
+            $user->save();
+            event(new PasswordReset($user));
+            return response($user, 200);
+        }
+
+        $response = ["message" =>'Wachtwoord wijzigen mislukt. Onjuist wachtwoord.'];
+        return response($response, 422);
     }
     protected function sendResetResponse(Request $request, $response)
     {
