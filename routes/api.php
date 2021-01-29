@@ -69,10 +69,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Surveys Routes
     Route::get('surveys', 'SurveyController@index');
+    Route::get('surveys/withuser', 'SurveyController@indexWithUser');
     Route::get('surveys/{survey}', 'SurveyController@show');
     Route::get('surveys/complete/{survey}', 'SurveyController@showComplete');
     Route::post('surveys', 'SurveyController@store');
+    Route::post('surveys/complete', 'SurveyController@storeComplete');
     Route::put('surveys/{survey}', 'SurveyController@update');
+    Route::put('surveys/complete/{survey}', 'SurveyController@updateComplete');
     Route::delete('surveys/{survey}', 'SurveyController@delete');
 
     // OpenQuestions Routes

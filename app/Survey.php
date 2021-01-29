@@ -32,4 +32,8 @@ class Survey extends Model
         'user_id', 'name', 'description', 'start_date', 'end_date',
     ];
 
+    protected $hidden = [
+        'updated_at',
+    ];
+
 }
