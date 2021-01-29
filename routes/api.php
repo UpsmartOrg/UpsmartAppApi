@@ -46,7 +46,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('users/withroles/{user}', 'UserController@showWithRoles');
     Route::post('users', 'UserController@store');
     Route::post('users/withroles', 'UserController@storeWithRoles');
-    Route::put('users/{user}', 'UserController@update')->middleware('api.admin');
+    Route::put('users/{user}', 'UserController@update');
     Route::put('users/withroles/{user}', 'UserController@updateWithRoles');
     Route::delete('users/{user}', 'UserController@delete');
 
@@ -67,10 +67,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Surveys Routes
     Route::get('surveys', 'SurveyController@index');
+    Route::get('surveys/withuser', 'SurveyController@indexWithUser');
     Route::get('surveys/{survey}', 'SurveyController@show');
     Route::get('surveys/complete/{survey}', 'SurveyController@showComplete');
     Route::post('surveys', 'SurveyController@store');
+    Route::post('surveys/complete', 'SurveyController@storeComplete');
     Route::put('surveys/{survey}', 'SurveyController@update');
+    Route::put('surveys/complete/{survey}', 'SurveyController@updateComplete');
     Route::delete('surveys/{survey}', 'SurveyController@delete');
 
     // OpenQuestions Routes
