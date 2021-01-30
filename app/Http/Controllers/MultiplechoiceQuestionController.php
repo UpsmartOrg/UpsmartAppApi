@@ -18,6 +18,10 @@ class MultiplechoiceQuestionController extends Controller
         return $multiplechoiceQuestion;
     }
 
+    public function showFromSurvey($surveyID){
+        return MultiplechoiceQuestion::where('survey_id', $surveyID)->get();
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),

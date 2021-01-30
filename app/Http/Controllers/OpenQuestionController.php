@@ -18,6 +18,10 @@ class OpenQuestionController extends Controller
         return $openQuestion;
     }
 
+    public function showFromSurvey($surveyID){
+        return OpenQuestion::where('survey_id', $surveyID)->get();
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),

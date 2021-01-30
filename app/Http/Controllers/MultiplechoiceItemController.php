@@ -18,6 +18,11 @@ class MultiplechoiceItemController extends Controller
         return $multiplechoiceItem;
     }
 
+    public function showFromQuestion($questionID)
+    {
+        return MultiplechoiceItem::where('multiplechoice_question_id', $questionID)->get();
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),
