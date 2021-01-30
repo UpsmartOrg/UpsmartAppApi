@@ -81,26 +81,26 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // OpenQuestions Routes
     Route::get('open_questions', 'OpenQuestionController@index');
     Route::get('open_questions/{openQuestion}', 'OpenQuestionController@show');
-    Route::get('open_questions/fromSurvey/{surveyID}', 'OpenQuestionController@showFromSurvey');
+    Route::get('open_questions/from-survey/{surveyID}', 'OpenQuestionController@showFromSurvey');
     Route::post('open_questions', 'OpenQuestionController@store');
     Route::put('open_questions/{openQuestion}', 'OpenQuestionController@update');
     Route::delete('open_questions/{openQuestion}', 'OpenQuestionController@delete');
 
     // MultiplechoiceQuestions Routes
-    Route::get('multi_questions', 'MultipleChoiceQuestionController@index');
-    Route::get('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@show');
-    Route::get('multi_questions/fromSurvey/{surveyID}', 'MultipleChoiceQuestionController@showFromSurvey');
-    Route::post('multi_questions', 'MultipleChoiceQuestionController@store');
-    Route::put('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@update');
-    Route::delete('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@delete');
+    Route::get('multi_questions', 'MultiplechoiceQuestionController@index');
+    Route::get('multi_questions/{multiplechoiceQuestion}', 'MultiplechoiceQuestionController@show');
+    Route::get('multi_questions/from-survey/{surveyID}', 'MultiplechoiceQuestionController@showFromSurvey');
+    Route::post('multi_questions', 'MultiplechoiceQuestionController@store');
+    Route::put('multi_questions/{multiplechoiceQuestion}', 'MultiplechoiceQuestionController@update');
+    Route::delete('multi_questions/{multiplechoiceQuestion}', 'MultiplechoiceQuestionController@delete');
 
     // MultipleChoiceItems Routes
-    Route::get('multi_items', 'MultipleChoiceItemController@index');
-    Route::get('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@show');
-    Route::get('multi_items/fromQuestion/{questionID}', 'MultipleChoiceItemController@showFromQuestion');
-    Route::post('multi_items', 'MultipleChoiceItemController@store');
-    Route::put('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@update');
-    Route::delete('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@delete');
+    Route::get('multi_items', 'MultiplechoiceItemController@index');
+    Route::get('multi_items/{multiplechoiceItem}', 'MultiplechoiceItemController@show');
+    Route::get('multi_items/from-question/{questionID}', 'MultiplechoiceItemController@showFromQuestion');
+    Route::post('multi_items', 'MultiplechoiceItemController@store');
+    Route::put('multi_items/{multiplechoiceItem}', 'MultiplechoiceItemController@update');
+    Route::delete('multi_items/{multiplechoiceItem}', 'MultiplechoiceItemController@delete');
 
     // ConductedSurveys Routes
     Route::get('conducted_surveys', 'ConductedSurveyController@index');
