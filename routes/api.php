@@ -97,6 +97,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // MultipleChoiceItems Routes
     Route::get('multi_items', 'MultipleChoiceItemController@index');
     Route::get('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@show');
+    Route::get('multi_items/fromQuestion/{questionID}', 'MultipleChoiceItemController@showFromQuestion');
     Route::post('multi_items', 'MultipleChoiceItemController@store');
     Route::put('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@update');
     Route::delete('multi_items/{multiplechoiceItem}', 'MultipleChoiceItemController@delete');
