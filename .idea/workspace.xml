@@ -21,7 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="295ba285-1a12-4477-afef-da82948298b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceQuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MultiplechoiceQuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpenQuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpenQuestionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +174,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/UpsmartAppApi-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vinyl_shop" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -205,6 +206,10 @@
       <workItem from="1611682553242" duration="4207000" />
       <workItem from="1611732751927" duration="9186000" />
       <workItem from="1611834619162" duration="12926000" />
+      <workItem from="1611917502546" duration="8000" />
+      <workItem from="1611935950226" duration="377000" />
+      <workItem from="1611936334347" duration="616000" />
+      <workItem from="1612010307911" duration="1692000" />
     </task>
     <servers />
   </component>

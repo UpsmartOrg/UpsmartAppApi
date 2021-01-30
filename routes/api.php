@@ -81,6 +81,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // OpenQuestions Routes
     Route::get('open_questions', 'OpenQuestionController@index');
     Route::get('open_questions/{openQuestion}', 'OpenQuestionController@show');
+    Route::get('open_questions/fromSurvey/{surveyID}', 'OpenQuestionController@showFromSurvey');
     Route::post('open_questions', 'OpenQuestionController@store');
     Route::put('open_questions/{openQuestion}', 'OpenQuestionController@update');
     Route::delete('open_questions/{openQuestion}', 'OpenQuestionController@delete');
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // MultiplechoiceQuestions Routes
     Route::get('multi_questions', 'MultipleChoiceQuestionController@index');
     Route::get('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@show');
+    Route::get('multi_questions/fromSurvey/{surveyID}', 'MultipleChoiceQuestionController@showFromSurvey');
     Route::post('multi_questions', 'MultipleChoiceQuestionController@store');
     Route::put('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@update');
     Route::delete('multi_questions/{multiplechoiceQuestion}', 'MultipleChoiceQuestionController@delete');
