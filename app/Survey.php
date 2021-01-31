@@ -19,8 +19,8 @@ class Survey extends Model
         return $this->hasMany('App\MultiplechoiceQuestion');
     }
 
-    public function conductedSurveys() {
-        return $this->hasMany('App\ConductedSurvey');
+    public function answers() {
+        return $this->hasMany('App\Answer');
     }
 
     /**
