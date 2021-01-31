@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     //Eloquent bindings
-    public function survey() {
+    public function surveys() {
         return $this->belongsTo('App\Survey');
     }
 
@@ -25,7 +25,7 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'conducted_survey_id', 'open_question_id', 'open_question_answer', 'multiplechoice_item_id',
+        'survey_id', 'open_question_id', 'open_question_answer', 'multiplechoice_item_id',
     ];
 
 }
