@@ -18,8 +18,8 @@ class CreateOpenQuestionsTable extends Migration
             $table->unsignedBigInteger('survey_id');
             $table->integer('question_order');
             $table->string('title');
-            $table->string('description');
-            $table->integer('rows');
+            $table->string('description')->nullable();
+            $table->integer('rows')->default(5);
             $table->timestamps();
 
             //Foreign keys
