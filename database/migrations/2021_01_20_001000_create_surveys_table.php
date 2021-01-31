@@ -18,8 +18,8 @@ class CreateSurveysTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('description');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
 
             //Foreign keys
