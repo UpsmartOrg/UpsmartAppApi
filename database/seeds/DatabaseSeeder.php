@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             OpenQuestionTableSeeder::class,
             MultiplechoiceQuestionTableSeeder::class,
             MultiplechoiceItemTableSeeder::class,
-            ConductedSurveyTableSeeder::class,
             AnswerTableSeeder::class,
             UserRoleTableSeeder::class,
         ]);
