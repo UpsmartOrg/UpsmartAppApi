@@ -104,34 +104,18 @@ class SurveyController extends Controller
 
         //Loop through all open questsions in the request and add them as new openQuestion
         foreach ($request->open_questions as $open_question) {
-            $newQuestion = new OpenQuestion();
-            $newQuestion->id = 0;
-            $newQuestion->survey_id = $survey->id;
-            $newQuestion->title = $open_question['title'];
-            $newQuestion->description = $open_question['description'];
-            $newQuestion->rows = $open_question['rows'];
-            $newQuestion->question_order = $open_question['question_order'];
-            $newQuestion->save();
+            $open_question['survey_id'] = $survey->id;
+            OpenQuestion::create($open_question);
         }
 
         //Loop through all open questsions in the request and add them as new openQuestion
         foreach ($request->multiplechoice_questions as $multi_question) {
-            error_log('Hier werkt het niet meer?');
-            $newQuestion = new MultiplechoiceQuestion();
-            $newQuestion->id = 0;
-            $newQuestion->survey_id = $survey->id;
-            $newQuestion->title = $multi_question['title'];
-            $newQuestion->description = $multi_question['description'];
-            $newQuestion->multiple_answers = $multi_question['multiple_answers'];
-            $newQuestion->question_order = $multi_question['question_order'];
-            $newQuestion->save();
+            $multi_question['survey_id'] = $survey->id;
+            $newQuestion = MultiplechoiceQuestion::create($multi_question);
 
             foreach ($multi_question['multiplechoice_items'] as $multi_item) {
-                $newItem = new MultiplechoiceItem();
-                $newItem->id = 0;
-                $newItem->multiplechoice_question_id = $newQuestion->id;
-                $newItem->title = $multi_item['title'];
-                $newItem->save();
+                $multi_item['multiplechoice_question_id'] = $newQuestion->id;
+                MultiplechoiceItem::create($multi_item);
             }
         }
         return response()->json($survey, 201);
@@ -175,7 +159,7 @@ class SurveyController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'user_id'                       => ['required', 'integer', 'exists:users,id'],
-                'name'                          => ['required', 'min:6', 'max:255', 'string', 'unique:surveys,name,' .$survey->name],
+                'name'                          => ['required', 'min:6', 'max:255', 'string', 'unique:surveys,name,' .$survey->id],
                 'description'                   => ['required', 'min:6', 'max:255', 'string'],
                 'start_date'                    => ['required', 'date'],
                 'end_date'                      => ['required', 'date', 'after_or_equal:start_date']
@@ -198,114 +182,95 @@ class SurveyController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
 
-        $requestOpenQuestions = [];
+        $survey->update($request->all());
+
+        //Open questions update
+        $updatedOpenQuestionID = [];
         //Loop through all open questsions in the request and add them as new openQuestion
         foreach ($request->open_questions as $open_question) {
-            if(!$open_question['id'] || $open_question['id'] == 0) {
-                $newQuestion = new OpenQuestion();
+            $open_question['survey_id'] = $survey->id;
+            if(!array_key_exists('id', $open_question) || $open_question['id'] == 0) {
+                $newQuestion = OpenQuestion::create($open_question);
 
-                $newQuestion->id = 0;
-                $newQuestion->survey_id = $survey->id;
-                $newQuestion->title = $open_question['title'];
-                $newQuestion->description = $open_question['description'];
-                $newQuestion->rows = $open_question['rows'];
-                $newQuestion->question_order = $open_question['question_order'];
-                $newQuestion->save();
-
-                array_push($requestOpenQuestions, $newQuestion->id);
+                array_push($updatedOpenQuestionID, $newQuestion->id);
             } else {
                 $updateQuestion = OpenQuestion::where('id', $open_question['id'])->first();
-                $updateQuestion->title = $open_question['title'];
-                $updateQuestion->description = $open_question['description'];
-                $updateQuestion->rows = $open_question['rows'];
-                $updateQuestion->question_order = $open_question['question_order'];
-                $updateQuestion->update();
-                array_push($requestOpenQuestions, $updateQuestion->id);
+                $updateQuestion->update($open_question);
+
+                array_push($updatedOpenQuestionID, $updateQuestion->id);
             }
         }
 
-        $currentOpenQuestions = OpenQuestion::where('survey_id', $survey->id)->get();
-        foreach ($currentOpenQuestions as $currentOpenQuestion) {
-            if(!in_array($currentOpenQuestion->id, $requestOpenQuestions)) {
-                //If the current question is not in the array, delete it
-                $currentOpenQuestion->delete();
+        //Delete open questsions not in updated list
+        $oldOpenQuestions = OpenQuestion::where('survey_id', $survey->id)->get();
+        foreach ($oldOpenQuestions as $oldOpenQuestion) {
+            if(!in_array($oldOpenQuestion->id, $updatedOpenQuestionID)) {
+                //If the old question is not in the updated question array, delete it
+                $oldOpenQuestion->delete();
             }
         }
 
-        $requestMultiQuestions = [];
+        //Multi questions update
+        $updatedMultiQuestionID = [];
         //Loop through all open questsions in the request and add them as new openQuestion
         foreach ($request->multiplechoice_questions as $multi_question) {
-            if(!$multi_question['id'] || $multi_question['id'] == 0) {
-                $newQuestion = new MultiplechoiceQuestion();
-                $newQuestion->id = 0;
-                $newQuestion->survey_id = $survey->id;
-                $newQuestion->title = $multi_question['title'];
-                $newQuestion->description = $multi_question['description'];
-                $newQuestion->multiple_answers = $multi_question['multiple_answers'];
-                $newQuestion->question_order = $multi_question['question_order'];
-                $newQuestion->save();
+            $multi_question['survey_id'] = $survey->id;
+            if(!array_key_exists('id', $multi_question) || $multi_question['id'] == 0) {
+                $newQuestion = MultiplechoiceQuestion::create($multi_question);
 
                 foreach ($multi_question['multiplechoice_items'] as $multi_item) {
-                    $newItem = new MultiplechoiceItem();
-                    $newItem->id = 0;
-                    $newItem->multiplechoice_question_id = $newQuestion->id;
-                    $newItem->title = $multi_item['title'];
-                    $newItem->save();
+                    $multi_item['multiplechoice_question_id'] = $newQuestion->id;
+                    MultiplechoiceItem::create($multi_item);
                 }
 
-                array_push($requestMultiQuestions, $newQuestion->id);
+                array_push($updatedMultiQuestionID, $newQuestion->id);
             } else {
                 $updateQuestion = MultiplechoiceQuestion::where('id', $multi_question['id'])->first();
-                $updateQuestion->title = $multi_question['title'];
-                $updateQuestion->description = $multi_question['description'];
-                $updateQuestion->multiple_answers = $multi_question['multiple_answers'];
-                $updateQuestion->question_order = $multi_question['question_order'];
-                $updateQuestion->update();
+                $updateQuestion->update($multi_question);
 
-                array_push($requestOpenQuestions, $updateQuestion->id);
-
-                $requestMultiItems = [];
+                //Multi items update
+                $updatedMultiItemID = [];
                 foreach ($multi_question['multiplechoice_items'] as $multi_item) {
+                    $multi_item['multiplechoice_question_id'] = $updateQuestion->id;
                     if(!$multi_question['id'] || $multi_question['id'] == 0) {
-                        $newItem = new MultiplechoiceItem();
-                        $newItem->id = 0;
-                        $newItem->multiplechoice_question_id = $newQuestion->id;
-                        $newItem->title = $multi_item['title'];
-                        $newItem->save();
+                        $newItem = MultiplechoiceItem::create($multi_item);
 
-                        array_push($requestMultiItems, $newItem->id);
+                        array_push($updatedMultiItemID, $newItem->id);
                     } else {
                         $updateItem = MultiplechoiceItem::where('id', $multi_item['id'])->first();
-                        $updateItem->title = $multi_item['title'];
-                        $updateItem->update();
 
-                        array_push($requestMultiItems, $updateItem->id);
+                        $updateItem->update($multi_item);
+
+                        array_push($updatedMultiItemID, $updateItem->id);
                     }
                 }
 
-                $currentMultiItems = MultiplechoiceItem::where('multiplechoice_question_id', $updateQuestion->id)->get();
-                foreach ($currentMultiItems as $currentMultiItem) {
-                    if(!in_array($currentMultiItem->id, $requestMultiItems)) {
+                //Delete multi items not in updated list
+                $oldMultiItems = MultiplechoiceItem::where('multiplechoice_question_id', $updateQuestion->id)->get();
+                foreach ($oldMultiItems as $oldMultiItem) {
+                    if(!in_array($oldMultiItem->id, $updatedMultiItemID)) {
                         //If the current item is not in the array, delete it
-                        $currentMultiItem->delete();
+                        $oldMultiItem->delete();
                     }
                 }
+
+                array_push($updatedMultiQuestionID, $updateQuestion->id);
             }
         }
 
-        $currentMultiQuestions = MultiplechoiceQuestion::where('survey_id', $survey->id)->get();
-        foreach ($currentMultiQuestions as $currentMultiQuestion) {
-            if(!in_array($currentMultiQuestion->id, $requestMultiQuestions)) {
+        //Delete multi questsions not in updated list
+        $oldMultiQuestsions = MultiplechoiceQuestion::where('survey_id', $survey->id)->get();
+        foreach ($oldMultiQuestsions as $oldMultiQuestsion) {
+            if(!in_array($oldMultiQuestsion->id, $updatedMultiQuestionID)) {
                 //If the current item is not in the array, delete it
-                $currentMultiQuestion->loadMissing('multiplechoiceItems');
-                foreach ($currentMultiQuestion->multiplechoice_items as $multiItem) {
-                    $multiItem->delete();
+                $deleteMultiItems = MultiplechoiceItem::where('multiplechoice_question_id', $oldMultiQuestsion->id)->get();
+
+                foreach ($deleteMultiItems as $deleteMultiItem) {
+                    $deleteMultiItem->delete();
                 }
-                $currentMultiItem->delete();
+                $oldMultiQuestsion->delete();
             }
         }
-
-        $survey->update($request->all());
 
         return response()->json($survey, 201);
     }

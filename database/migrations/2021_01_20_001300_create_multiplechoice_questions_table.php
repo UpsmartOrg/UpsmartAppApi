@@ -18,7 +18,7 @@ class CreateMultiplechoiceQuestionsTable extends Migration
             $table->unsignedBigInteger('survey_id');
             $table->integer('question_order');
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->boolean('multiple_answers')->default(false);
             $table->timestamps();
 
