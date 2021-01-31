@@ -104,8 +104,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Answers Routes
     Route::get('answers', 'AnswerController@index');
-    Route::get('answers/{answer}', 'AnswerController@show');
-    Route::post('answers', 'AnswerController@store');
+    Route::get('answers/{answer}', 'App\Http\Controllers\AnswerController@show');
+    Route::post('answers', 'App\Http\Controllers\AnswerController@store');
     Route::put('answers/{answer}', 'AnswerController@update');
     Route::delete('answers/{answer}', 'AnswerController@delete');
 });
