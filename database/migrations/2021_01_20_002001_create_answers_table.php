@@ -15,10 +15,10 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('conducted_survey_id');
+            $table->unsignedBigInteger('survey_id');
             $table->unsignedBigInteger('open_question_id')->nullable();
             $table->string('open_question_answer')->nullable();
-            $table->unsignedBigInteger('survey_id')->nullable();
+            $table->unsignedBigInteger('multiplechoice_item_id')->nullable();
             $table->timestamps();
 
             //Foreign keys
