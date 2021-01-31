@@ -22,9 +22,9 @@ class AnswerController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'conducted_survey_id'           => ['required', 'integer', 'exists:conducted_surveys,id'],
+                'survey_id'                     => ['required', 'integer', 'exists:surveys,id'],
                 'open_question_id'              => ['integer', 'exists:open_questions,id'],
-                'open_question_answer'          => ['required_if:open_question_id', 'min:6', 'max:255', 'string'],
+                'open_question_answer'          => ['max:255', 'string'],
                 'multiplechoice_item_id'        => ['integer', 'exists:multiplechoice_items,id'],
             ],
             [

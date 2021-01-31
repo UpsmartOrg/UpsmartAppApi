@@ -102,17 +102,10 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::put('multi_items/{multiplechoiceItem}', 'MultiplechoiceItemController@update');
     Route::delete('multi_items/{multiplechoiceItem}', 'MultiplechoiceItemController@delete');
 
-    // ConductedSurveys Routes
-    Route::get('conducted_surveys', 'ConductedSurveyController@index');
-    Route::get('conducted_surveys/{conductedSurvey}', 'ConductedSurveyController@show');
-    Route::post('conducted_surveys', 'ConductedSurveyController@store');
-    Route::put('conducted_surveys/{conductedSurvey}', 'ConductedSurveyController@update');
-    Route::delete('conducted_surveys/{conductedSurvey}', 'ConductedSurveyController@delete');
-
     // Answers Routes
     Route::get('answers', 'AnswerController@index');
-    Route::get('answers/{answer}', 'AnswerController@show');
-    Route::post('answers', 'AnswerController@store');
+    Route::get('answers/{answer}', 'App\Http\Controllers\AnswerController@show');
+    Route::post('answers', 'App\Http\Controllers\AnswerController@store');
     Route::put('answers/{answer}', 'AnswerController@update');
     Route::delete('answers/{answer}', 'AnswerController@delete');
 });
