@@ -18,13 +18,13 @@ class CreateAnswersTable extends Migration
             $table->unsignedBigInteger('conducted_survey_id');
             $table->unsignedBigInteger('open_question_id')->nullable();
             $table->string('open_question_answer')->nullable();
-            $table->unsignedBigInteger('multiplechoice_item_id')->nullable();
+            $table->unsignedBigInteger('survey_id')->nullable();
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('conducted_survey_id')
+            $table->foreign('survey_id')
                 ->references('id')
-                ->on('conducted_surveys')
+                ->on('surveys')
                 ->onDelete('restrict');
 
             $table->foreign('open_question_id')
