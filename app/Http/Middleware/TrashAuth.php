@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\UserRole;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuth
+class TrashAuth
 {
     /**
      * Handle an incoming request.
@@ -19,7 +18,7 @@ class AdminAuth
     {
         if (Auth::guard('api')->check()) {
             foreach (Auth::user()->userRoles as $userRole) {
-                if($userRole->role_id == 4) {
+                if($userRole->role_id == 1 || $userRole->role_id == 4) {
                     return $next($request);
                 }
             }

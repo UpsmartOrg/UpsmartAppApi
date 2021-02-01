@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\UserRole;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuth
+class CommunicationAuth
 {
     /**
      * Handle an incoming request.
@@ -19,7 +18,7 @@ class AdminAuth
     {
         if (Auth::guard('api')->check()) {
             foreach (Auth::user()->userRoles as $userRole) {
-                if($userRole->role_id == 4) {
+                if($userRole->role_id == 3 || $userRole->role_id == 4) {
                     return $next($request);
                 }
             }
