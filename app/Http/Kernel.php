@@ -69,5 +69,8 @@ class Kernel extends HttpKernel
         'json.response' => \App\Http\Middleware\ForceJsonResponse::class,
         'cors' => \App\Http\Middleware\Cors::class,
         'api.admin' => \App\Http\Middleware\AdminAuth::class,
+        'api.communication' => \App\Http\Middleware\CommunicationAuth::class,
+        'api.participation' => \App\Http\Middleware\ParticipationAuth::class,
+        'api.trash' => \App\Http\Middleware\TrashAuth::class,
     ];
 }
