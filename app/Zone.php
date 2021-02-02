@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Zone extends Model
 {
     //Eloquent bindings
-    public function zone() {
+    public function binInfo() {
         return $this->hasMany('App\BinInfo');
     }
 

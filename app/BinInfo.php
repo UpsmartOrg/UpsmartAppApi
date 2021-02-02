@@ -23,4 +23,6 @@ class BinInfo extends Model
     protected $fillable = [
         'name', 'bin_id', 'zone_id'
     ];
+
+    protected $table = 'bin_info';
 }

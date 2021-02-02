@@ -22,15 +22,15 @@ class ZoneController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'name'                  => ['required', 'min:2', 'max:255', 'string', 'unique:roles,name'],
-                'description'           => ['required', 'min:2', 'max:255', 'string'],
+                'name'                  => ['required', 'min:2', 'max:255', 'string', 'unique:zones,name'],
+                'description'           => ['max:255', 'string'],
             ],
             [
                 'required'              => 'Je moet :attribute invullen',
                 'min'                   => ':attribute moet minsters 2 karakters lang zijn',
                 'max'                   => ':attribute mag maximum 255 karakters lang zijn',
                 'string'                => ':attribute moet een string zijn',
-                'unique'                => ':attribute moet uniek zijn binnen rollen',
+                'unique'                => 'Er bestaat al een zone met deze naam',
             ]);
         //On validation fail
         if ($validator->fails())
@@ -55,7 +55,7 @@ class ZoneController extends Controller
                 'min'                   => ':attribute moet minsters 2 karakters lang zijn',
                 'max'                   => ':attribute mag maximum 255 karakters lang zijn',
                 'string'                => ':attribute moet een string zijn',
-                'unique'                => ':attribute moet uniek zijn binnen rollen',
+                'unique'                => 'Er bestaat al een zone met deze naam',
             ]);
         //On validation fail
         if ($validator->fails())
@@ -69,6 +69,10 @@ class ZoneController extends Controller
 
     public function delete(Zone $zone)
     {
+        foreach ($zone->binInfo as $binInfo) {
+            $binInfo->zone_id = null;
+            $binInfo->update();
+        }
         $zone->delete();
 
         return response()->json(null, 204);

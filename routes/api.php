@@ -89,6 +89,23 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('answers/{answer}', 'App\Http\Controllers\AnswerController@show');
     Route::post('answers', 'App\Http\Controllers\AnswerController@store');
     Route::delete('answers/{answer}', 'AnswerController@delete');
+
+    // Bin Routes
+    Route::get('bins', 'BinController@index');
+
+    // Zone Routes
+    Route::get('zones', 'ZoneController@index');
+    Route::get('zones/{zone}', 'ZoneController@show');
+    Route::post('zones', 'ZoneController@store');
+    Route::put('zones/{zone}', 'ZoneController@update');
+    Route::delete('zones/{zone}', 'ZoneController@delete');
+
+    // Bininfo routes
+    Route::get('bininfo', 'BinInfoController@index');
+    Route::get('bininfo/{binInfo}', 'BinInfoController@show');
+    Route::post('bininfo/addNew', 'BinInfoController@loadNewBins');
+    Route::put('bininfo/{binInfo}', 'BinInfoController@update');
+    Route::delete('bininfo/{binInfo}', 'BinInfoController@delete');
 });
 
 

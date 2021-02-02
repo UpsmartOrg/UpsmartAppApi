@@ -12,6 +12,8 @@ class Bin extends Model
     }
 
     protected $table = 'DataSensoren';
-    protected $primaryKey = 'ID';
+
     public $timestamps = false;
+
+    protected $connection = 'mysql_bins';
 }

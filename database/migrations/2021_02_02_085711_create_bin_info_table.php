@@ -15,15 +15,16 @@ class CreateBinInfoTable extends Migration
     {
         Schema::create('bin_info', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('bin_id');
+            $table->string('name')->unique();
+            $table->string('address')->nullable();
+            $table->string('bin_id')->unique();
             $table->unsignedBigInteger('zone_id')->nullable();
             $table->timestamps();
 
 //            Foreign keys
 //            $table->foreign('bin_id')
 //                ->references('ID')
-//                ->on('DataSensoren')
-//                ->onDelete('restrict');
+//                ->on('upsmartBins.DataSensoren');
             $table->foreign('zone_id')
                 ->references('id')
                 ->on('zones')
