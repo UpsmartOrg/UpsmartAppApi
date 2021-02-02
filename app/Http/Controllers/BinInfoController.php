@@ -35,14 +35,16 @@ class BinInfoController extends Controller
                 if (!in_array($bin, $binInfoList)) {
                     $newBinInfo = new BinInfo();
                     $newBinInfo->bin_id = $bin['bin_id'];
-                    $newBinInfo->name = 'vuilbak' . ($binInfoCount + 1);
-                    $newBinInfo->save();
+                    $newBinInfo->name = 'vuilbak-' . str_random(6);
+                    //Just in case the string matches an existing bin
+                    while (BinInfo::where('name', $newBinInfo->name)->count() > 0) {
+                        $newBinInfo->name = 'vuilbak-' . str_random(6);
+                    }
 
+                    $newBinInfo->save();
                     array_push($newBinInfoList, $newBinInfo);
-                    $binInfoCount++;
                 }
             }
-
             return response()->json($newBinInfoList, 201);
         }
 
@@ -74,6 +76,28 @@ class BinInfoController extends Controller
         }
         $binInfo->name = $request->name;
         $binInfo->address = $request->address;
+        $binInfo->zone_id = $request->zone_id;
+
+        $binInfo->update();
+
+        return response()->json($binInfo, 200);
+    }
+
+    public function updateZone(Request $request, BinInfo $binInfo)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'zone_id'               => ['integer', 'exists:zones,id']
+            ],
+            [
+                'integer'               => ':attribute moet een integer zijn',
+                'exists'                => ':attribute bestaat niet in onze data',
+            ]);
+        //On validation fail
+        if ($validator->fails())
+        {
+            return response(['errors'=>$validator->errors()->all()], 422);
+        }
         $binInfo->zone_id = $request->zone_id;
 
         $binInfo->update();

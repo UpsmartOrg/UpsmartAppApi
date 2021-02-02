@@ -95,7 +95,9 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // Zone Routes
     Route::get('zones', 'ZoneController@index');
+    Route::get('zones/withbins', 'ZoneController@indexWithBins');
     Route::get('zones/{zone}', 'ZoneController@show');
+    Route::get('zones/withbins/{zone}', 'ZoneController@showWithBins');
     Route::post('zones', 'ZoneController@store');
     Route::put('zones/{zone}', 'ZoneController@update');
     Route::delete('zones/{zone}', 'ZoneController@delete');
@@ -103,8 +105,9 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // Bininfo routes
     Route::get('bininfo', 'BinInfoController@index');
     Route::get('bininfo/{binInfo}', 'BinInfoController@show');
-    Route::post('bininfo/addNew', 'BinInfoController@loadNewBins');
+    Route::post('bininfo/update', 'BinInfoController@loadNewBins');
     Route::put('bininfo/{binInfo}', 'BinInfoController@update');
+    Route::put('bininfo/zone/{binInfo}', 'BinInfoController@updateZone');
     Route::delete('bininfo/{binInfo}', 'BinInfoController@delete');
 });
 

@@ -13,9 +13,19 @@ class ZoneController extends Controller
         return Zone::all();
     }
 
+    public function indexWithBins()
+    {
+        return Zone::all()->loadMissing('binInfo');
+    }
+
     public function show(Zone $zone)
     {
         return $zone;
+    }
+
+    public function showWithBins(Zone $zone)
+    {
+        return $zone->loadMissing('binInfo');;
     }
 
     public function store(Request $request)
@@ -62,6 +72,7 @@ class ZoneController extends Controller
         {
             return response(['errors'=>$validator->errors()->all()], 422);
         }
+        $zone->description = $request->description;
         $zone->update($request->all());
 
         return response()->json($zone, 200);
