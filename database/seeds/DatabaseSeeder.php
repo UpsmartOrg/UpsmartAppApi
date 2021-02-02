@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MultiplechoiceItemTableSeeder::class,
             AnswerTableSeeder::class,
             UserRoleTableSeeder::class,
+            ZoneTableSeeder::class,
         ]);
     }
 }
