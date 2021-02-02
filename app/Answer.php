@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     //Eloquent bindings
-    public function surveys() {
+    public function survey() {
         return $this->belongsTo('App\Survey');
     }
 
