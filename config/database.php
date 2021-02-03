@@ -62,12 +62,11 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'mysql_bins' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL_BIN'),
-            'host' => env('DB_HOST_BIN', '127.0.0.1'),
-            'port' => env('DB_PORT_BIN', '3306'),
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE_BIN', 'forge'),
             'username' => env('DB_USERNAME_BIN', 'forge'),
             'password' => env('DB_PASSWORD_BIN', ''),
