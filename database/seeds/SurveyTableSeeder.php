@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class SurveyTableSeeder extends Seeder
@@ -20,6 +21,7 @@ class SurveyTableSeeder extends Seeder
                     'description' => 'Wat vragen over de parkeerplaats binnen Herentals',
                     'start_date' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2021 00:00'),
                     'end_date' => DateTime::createFromFormat('d/m/Y H:i', '31/07/2021 00:00'),
+                    'created_at' => Carbon::parse('2021-01-01')
                 ],
                 [
                     'user_id' => 3,
@@ -27,6 +29,7 @@ class SurveyTableSeeder extends Seeder
                     'description' => 'Wat vragen over u omgaat met COVID-19',
                     'start_date' => DateTime::createFromFormat('d/m/Y H:i', '01/09/2020 00:00'),
                     'end_date' => DateTime::createFromFormat('d/m/Y H:i', '31/03/2021 00:00'),
+                    'created_at' => Carbon::parse('2021-01-01')
                 ],
                 [
                     'user_id' => 2,
@@ -34,6 +37,7 @@ class SurveyTableSeeder extends Seeder
                     'description' => 'Welke activiteiten wil u deze zomer zien',
                     'start_date' => DateTime::createFromFormat('d/m/Y H:i', '01/05/2021 00:00'),
                     'end_date' => DateTime::createFromFormat('d/m/Y H:i', '31/08/2021 00:00'),
+                    'created_at' => Carbon::parse('2021-01-01')
                 ],
             ]);
     }

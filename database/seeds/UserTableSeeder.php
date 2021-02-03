@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
                     'last_name' => 'Arkens',
                     'password' => Hash::make('testtest'),
                     'is_extern' => false,
-                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '30/01/2021 15:00')
                 ],
                 [
                     'email' => 'BarryB@herentals.be',
@@ -30,7 +30,7 @@ class UserTableSeeder extends Seeder
                     'last_name' => 'Bostols',
                     'password' => Hash::make('testtest'),
                     'is_extern' => false,
-                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '30/01/2021 15:00')
                 ],
                 [
                     'email' => 'ConnieC@herentals.be',
@@ -39,7 +39,7 @@ class UserTableSeeder extends Seeder
                     'last_name' => 'Cannaerts',
                     'password' => Hash::make('testtest'),
                     'is_extern' => false,
-                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '01/01/2020 15:00')
+                    'created_at' => DateTime::createFromFormat('d/m/Y H:i', '30/01/2021 15:00')
                 ],
                 [
                     'email' => 'DirkD@herentals.be',
