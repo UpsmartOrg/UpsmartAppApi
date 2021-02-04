@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BinInfo;
 use App\Zone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -76,6 +77,42 @@ class ZoneController extends Controller
         $zone->update($request->all());
 
         return response()->json($zone, 200);
+    }
+
+    public function updateZoneBins(Request $request, Zone $zone)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'bin_id_list'           => ['array'],
+            ],
+            [
+                'array'                 => ':attribute moet een array zijn',
+            ]);
+        //On validation fail
+        if ($validator->fails())
+        {
+            return response(['errors'=>$validator->errors()->all()], 422);
+        }
+
+        if(!$request->bin_id_list) {
+            $request->bin_id_list = [];
+        }
+
+        foreach ($request->bin_id_list as $binID) {
+            $bin = BinInfo::findOrFail($binID);
+
+            $bin->zone_id = $zone->id;
+
+            $bin->update();
+        }
+
+        $toRemoveBins = $zone->binInfo->whereNotIn('id', $request->bin_id_list);
+        foreach ($toRemoveBins as $toRemoveBins) {
+            $toRemoveBins->zone_id = null;
+            $toRemoveBins->update();
+        }
+
+        return response()->json($zone->binInfo, 200);
     }
 
     public function delete(Zone $zone)

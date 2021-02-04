@@ -100,10 +100,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('zones/withbins/{zone}', 'ZoneController@showWithBins');
     Route::post('zones', 'ZoneController@store');
     Route::put('zones/{zone}', 'ZoneController@update');
+    Route::put('zones/bins/{zone}', 'ZoneController@updateZoneBins');
     Route::delete('zones/{zone}', 'ZoneController@delete');
 
     // Bininfo routes
     Route::get('bininfo', 'BinInfoController@index');
+    Route::get('bininfo/byzone/{zone}', 'BinInfoController@indexByZone');
+    Route::get('bininfo/nozone', 'BinInfoController@indexNoZone');
     Route::get('bininfo/{binInfo}', 'BinInfoController@show');
     Route::post('bininfo/update', 'BinInfoController@loadNewBins');
     Route::put('bininfo/{binInfo}', 'BinInfoController@update');
