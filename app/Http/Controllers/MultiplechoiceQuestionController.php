@@ -24,7 +24,7 @@ class MultiplechoiceQuestionController extends Controller
 
     public function showQuickSurvey(){
         return MultiplechoiceQuestion::whereHas('survey', function($query){
-            return $query->where('id', '=', 1);
+            return $query->where('quick_survey', '=', true);
         })->get();
     }
 

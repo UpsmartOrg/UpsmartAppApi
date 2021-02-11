@@ -18,6 +18,7 @@ class CreateSurveysTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('description');
+            $table->boolean('quick_survey');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->timestamps();

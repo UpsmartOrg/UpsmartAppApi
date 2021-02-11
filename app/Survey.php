@@ -29,7 +29,7 @@ class Survey extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'name', 'description', 'start_date', 'end_date',
+        'user_id', 'name', 'description', 'quick_survey', 'start_date', 'end_date',
     ];
 
     protected $hidden = [
