@@ -22,6 +22,10 @@ class OpenQuestionController extends Controller
         return OpenQuestion::where('survey_id', $surveyID)->get();
     }
 
+    public function showQuickSurvey(){
+        return OpenQuestion::with('question')->where('id', 1)->get();
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),
