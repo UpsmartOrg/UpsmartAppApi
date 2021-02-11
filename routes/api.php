@@ -77,9 +77,11 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     // OpenQuestions Routes
     Route::get('open_questions/from-survey/{surveyID}', 'OpenQuestionController@showFromSurvey');
+    Route::get('open_questions/quick-survey', 'OpenQuestionController@showQuickSurvey');
 
     // MultiplechoiceQuestions Routes
     Route::get('multi_questions/from-survey/{surveyID}', 'MultiplechoiceQuestionController@showFromSurvey');
+    Route::get('multi_questions/quick-survey', 'MultiplechoiceQuestionController@showQuickSurvey');
 
     // MultipleChoiceItems Routes
     Route::get('multi_items/from-question/{questionID}', 'MultiplechoiceItemController@showFromQuestion');
