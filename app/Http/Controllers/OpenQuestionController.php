@@ -23,7 +23,9 @@ class OpenQuestionController extends Controller
     }
 
     public function showQuickSurvey(){
-        return OpenQuestion::with('question')->where('id', 1)->get();
+        return OpenQuestion::whereHas('survey', function($query){
+            return $query->where('id', '=', 1);
+        })->get();
     }
 
     public function store(Request $request)
