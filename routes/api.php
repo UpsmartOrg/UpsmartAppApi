@@ -95,6 +95,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // Bin Routes
     Route::get('bins', 'BinController@index');
     Route::get('bins/all', 'BinController@indexAllBins');
+    Route::get('bins/test', 'BinController@test');
 
     // Zone Routes
     Route::get('zones', 'ZoneController@index');
