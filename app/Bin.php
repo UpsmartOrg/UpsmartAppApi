@@ -15,5 +15,5 @@ class Bin extends Model
 
     public $timestamps = false;
 
-    protected $connection = 'mysql_bins';
+    protected $connection = 'bins';
 }
