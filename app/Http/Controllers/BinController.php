@@ -22,7 +22,7 @@ class BinController extends Controller
 
     public function test()
     {
-        return 'Test successfully completed!';
+        return 'Test successfully completed!!';
     }
 
     public function show(Bin $bin)
