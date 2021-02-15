@@ -10,9 +10,22 @@ class BinController extends Controller
 {
     public function index()
     {
-        $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])->distinct()->get()->toArray();
+        $binList = Bin::select(['ID as bin_id'])
+            ->distinct()
+            ->get()
+            ->toArray();
+        
+        $returnList = [];
+        foreach ($binList as $bin) {
+            $bin = Bin::where('ID', $bin['bin_id'])
+                ->whereNotNull(['longitude', 'latitude'])
+                ->orderByDesc('tijd')
+                ->select(['ID as bin_id', 'longitude', 'latitude'])
+                ->firstOrFail();
+            array_push($returnList, $bin);
+        }
 
-        return $binList;
+        return $returnList;
     }
 
     public function indexAllBins()
@@ -22,7 +35,7 @@ class BinController extends Controller
 
     public function test()
     {
-        return 'Test successfully completed!!';
+        return 'Test successfully completed!';
     }
 
     public function show(Bin $bin)
