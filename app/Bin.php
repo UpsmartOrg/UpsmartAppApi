@@ -11,7 +11,7 @@ class Bin extends Model
         return $this->hasOne('App\BinInfo');
     }
 
-    protected $table = 'dbo.DataSensoren';
+    protected $table = 'DataSensoren';
 
     public $timestamps = false;
 
