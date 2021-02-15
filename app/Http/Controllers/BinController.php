@@ -20,6 +20,11 @@ class BinController extends Controller
         return Bin::all();
     }
 
+    public function test()
+    {
+        return 'Test successfully completed!';
+    }
+
     public function show(Bin $bin)
     {
         return $bin;
