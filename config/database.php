@@ -65,12 +65,11 @@ return [
 
         'mysql_bins' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST_BIN'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE_BIN', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE_BIN'),
+            'username' => env('DB_USERNAME_BIN'),
+            'password' => env('DB_PASSWORD_BIN'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

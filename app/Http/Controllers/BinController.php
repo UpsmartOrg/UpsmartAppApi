@@ -10,10 +10,12 @@ class BinController extends Controller
 {
     public function index()
     {
-        return Bin::all();
+        $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])->distinct()->get()->toArray();
+
+        return $binList;
     }
 
-    public function indexUnique()
+    public function indexAllBins()
     {
         return Bin::all();
     }
