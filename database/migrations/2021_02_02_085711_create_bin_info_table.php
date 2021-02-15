@@ -21,10 +21,6 @@ class CreateBinInfoTable extends Migration
             $table->unsignedBigInteger('zone_id')->nullable();
             $table->timestamps();
 
-//            Foreign keys
-//            $table->foreign('bin_id')
-//                ->references('ID')
-//                ->on('upsmartBins.DataSensoren');
             $table->foreign('zone_id')
                 ->references('id')
                 ->on('zones')
