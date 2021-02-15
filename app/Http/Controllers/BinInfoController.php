@@ -37,15 +37,25 @@ class BinInfoController extends Controller
         $binCount = Bin::distinct()->count('ID');
 
         if($binInfoCount < $binCount) {
-
-            $binList = BIN::select(['ID AS bin_id'])->distinct()->get()->toArray();
-            $binInfoList = BinInfo::select(['bin_id'])->distinct()->get()->toArray();
+            //Unique sensor ID's in the sensor Database
+            $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])
+                ->distinct()
+                ->get()
+                ->toArray();
+            $binInfoIDList = BinInfo::select(['bin_id'])
+                ->get()
+                ->toArray();
 
             $newBinInfoList = [];
             foreach ($binList as $bin) {
-                if (!in_array($bin, $binInfoList)) {
+                //Create object that matches the binInfoIDList objects exactly to compare
+                $binID['bin_id'] = $bin['bin_id'];
+                if (!in_array($binID, $binInfoIDList)) {
                     $newBinInfo = new BinInfo();
                     $newBinInfo->bin_id = $bin['bin_id'];
+                    $newBinInfo->longitude = $bin['longitude'];
+                    $newBinInfo->latitude = $bin['latitude'];
+
                     $newBinInfo->name = 'vuilbak-' . str_random(6);
                     //Just in case the string matches an existing bin
                     while (BinInfo::where('name', $newBinInfo->name)->count() > 0) {
@@ -61,6 +71,20 @@ class BinInfoController extends Controller
 
         $return = 'Alle vuilbakken zijn toegevoegd';
         return response()->json($return, 200);
+    }
+
+    public function updateBinInfo(BinInfo $binInfo)
+    {
+        $bin = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])
+            ->distinct()
+            ->where('ID', $binInfo->bin_id)
+            ->firstOrFail();
+
+        $binInfo->longitude = $bin->longitude;
+        $binInfo->latitude = $bin->latitude;
+        $binInfo->update();
+
+        return $binInfo;
     }
 
     public function update(Request $request, BinInfo $binInfo)
