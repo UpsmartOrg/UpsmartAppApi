@@ -4,15 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Bin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class BinController extends Controller
 {
     public function index()
     {
-        $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])->distinct()->get()->toArray();
+//        $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])
+//            ->distinct()
+//            ->whereNotNull(['longitude', 'latitude'])
+//            ->groupBy('bin_id')
+//            ->get()
+//            ->toArray();
 
-        return $binList;
+        $binList = Bin::select(['ID as bin_id'])
+            ->distinct()
+            ->get()
+            ->toArray();
+        $returnList = [];
+        foreach ($binList as $bin) {
+            $bin = Bin::where('ID', $bin['bin_id'])
+                ->whereNotNull(['longitude', 'latitude'])
+                ->orderByDesc('tijd')
+                ->select(['ID as bin_id', 'longitude', 'latitude'])
+                ->firstOrFail();
+            array_push($returnList, $bin);
+        }
+
+        return $returnList;
     }
 
     public function indexAllBins()
@@ -22,7 +42,7 @@ class BinController extends Controller
 
     public function test()
     {
-        return 'Test successfully completed!!';
+        return 'Test successfully completed!';
     }
 
     public function show(Bin $bin)

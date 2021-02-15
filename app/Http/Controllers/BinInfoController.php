@@ -38,7 +38,7 @@ class BinInfoController extends Controller
 
         if($binInfoCount < $binCount) {
             //Unique sensor ID's in the sensor Database
-            $binList = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])
+            $binList = Bin::select(['ID AS bin_id'])
                 ->distinct()
                 ->get()
                 ->toArray();
@@ -48,13 +48,19 @@ class BinInfoController extends Controller
 
             $newBinInfoList = [];
             foreach ($binList as $bin) {
-                //Create object that matches the binInfoIDList objects exactly to compare
-                $binID['bin_id'] = $bin['bin_id'];
-                if (!in_array($binID, $binInfoIDList)) {
+                //If the bin is not in the array of binInfo, create new bininfo
+                if (!in_array($bin, $binInfoIDList)) {
+                    //Load in the relevant bin info (currently only have bin_id)
+                    $bin = Bin::where('ID', $bin['bin_id'])
+                        ->whereNotNull(['longitude', 'latitude'])
+                        ->orderByDesc('tijd')
+                        ->select(['ID as bin_id', 'longitude', 'latitude'])
+                        ->firstOrFail();
+
                     $newBinInfo = new BinInfo();
-                    $newBinInfo->bin_id = $bin['bin_id'];
-                    $newBinInfo->longitude = $bin['longitude'];
-                    $newBinInfo->latitude = $bin['latitude'];
+                    $newBinInfo->bin_id = $bin->bin_id;
+                    $newBinInfo->longitude = $bin->longitude;
+                    $newBinInfo->latitude = $bin->latitude;
 
                     $newBinInfo->name = 'vuilbak-' . str_random(6);
                     //Just in case the string matches an existing bin
@@ -75,16 +81,23 @@ class BinInfoController extends Controller
 
     public function updateBinInfo(BinInfo $binInfo)
     {
-        $bin = Bin::select(['ID AS bin_id', 'longitude', 'latitude'])
+        $bin = Bin::select(['ID AS bin_id'])
             ->distinct()
             ->where('ID', $binInfo->bin_id)
+            ->firstOrFail();
+
+        //Load in the relevant bin info (currently only have bin_id)
+        $bin = Bin::where('ID', $bin['bin_id'])
+            ->whereNotNull(['longitude', 'latitude'])
+            ->orderByDesc('tijd')
+            ->select(['ID as bin_id', 'longitude', 'latitude'])
             ->firstOrFail();
 
         $binInfo->longitude = $bin->longitude;
         $binInfo->latitude = $bin->latitude;
         $binInfo->update();
 
-        return $binInfo;
+        return response()->json($binInfo, 200);
     }
 
     public function update(Request $request, BinInfo $binInfo)
