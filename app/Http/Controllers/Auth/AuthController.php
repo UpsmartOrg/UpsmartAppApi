@@ -15,13 +15,11 @@ class AuthController extends Controller
     public function login (Request $request) {
         $validator = Validator::make($request->all(),
             [
-                'email'                         => ['required_without:username'],
-                'username'                      => ['required_without:email'],
+                'email'                         => ['required'],
                 'password'                      => ['required']
             ],
             [
-                'required'                      => 'Je moet :attribute invullen',
-                'required_without'              => 'Je moet een email of username invullen'
+                'required'                      => 'Je moet een email of username invullen',
             ]);
         //On validation fail
         if ($validator->fails())
@@ -29,11 +27,9 @@ class AuthController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
 
-        if ($request->email){
-            $user = User::where('email', $request->email)->first();
-        }
-        else {
-            $user = User::where('username', $request->username)->first();
+        $user = User::where('email', $request->email)->first();
+        if (!$user){
+            $user = User::where('username', $request->email)->first();
         }
 
         if ($user) {
@@ -41,11 +37,10 @@ class AuthController extends Controller
                 $token = $user->createToken('authToken');
                 $user->token = $token->plainTextToken;
                 return response($user, 200);
-                //return response()->json($user, 201);
             }
         }
 
-        $response = ["message" =>'Login mislukt. Onjuist email of wachtwoord.'];
+        $response = ["message" =>'Login mislukt. Onjuiste login gegevens.'];
         return response($response, 422);
     }
 
