@@ -16,11 +16,10 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'email'                         => ['required'],
-                //'username'                 => ['required', 'min:2', 'max:255', 'string'],
                 'password'                      => ['required']
             ],
             [
-                'required'                      => 'Je moet :attribute invullen'
+                'required'                      => 'Je moet een email of username invullen',
             ]);
         //On validation fail
         if ($validator->fails())
@@ -29,16 +28,19 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
+        if (!$user){
+            $user = User::where('username', $request->email)->first();
+        }
+
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('authToken');
                 $user->token = $token->plainTextToken;
                 return response($user, 200);
-                //return response()->json($user, 201);
             }
         }
 
-        $response = ["message" =>'Login mislukt. Onjuist email of wachtwoord.'];
+        $response = ["message" =>'Login mislukt. Onjuiste login gegevens.'];
         return response($response, 422);
     }
 
