@@ -113,7 +113,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('bininfo/nozone', 'BinInfoController@indexNoZone');
     Route::get('bininfo/{binInfo}', 'BinInfoController@show');
     Route::post('bininfo/update', 'BinInfoController@loadNewBins');
-    Route::post('bininfo/updatebin/{binInfo}', 'BinInfoController@updateBinInfo');
+    Route::put('bininfo/update/coords/{binInfo}', 'BinInfoController@updateBinCoordinates');
     Route::put('bininfo/{binInfo}', 'BinInfoController@update');
     Route::put('bininfo/zone/{binInfo}', 'BinInfoController@updateZone');
     Route::delete('bininfo/{binInfo}', 'BinInfoController@delete');
