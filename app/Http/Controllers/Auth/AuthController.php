@@ -15,12 +15,13 @@ class AuthController extends Controller
     public function login (Request $request) {
         $validator = Validator::make($request->all(),
             [
-                'email'                         => ['required'],
-                //'username'                 => ['required', 'min:2', 'max:255', 'string'],
+                'email'                         => ['required_without:username'],
+                'username'                      => ['required_without:email'],
                 'password'                      => ['required']
             ],
             [
-                'required'                      => 'Je moet :attribute invullen'
+                'required'                      => 'Je moet :attribute invullen',
+                'required_without'              => 'Je moet een email of username invullen'
             ]);
         //On validation fail
         if ($validator->fails())
@@ -28,7 +29,13 @@ class AuthController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
 
-        $user = User::where('email', $request->email)->first();
+        if ($request->email){
+            $user = User::where('email', $request->email)->first();
+        }
+        else {
+            $user = User::where('username', $request->username)->first();
+        }
+
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('authToken');
