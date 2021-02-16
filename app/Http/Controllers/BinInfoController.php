@@ -79,7 +79,7 @@ class BinInfoController extends Controller
         return response()->json($return, 200);
     }
 
-    public function updateBinInfo(BinInfo $binInfo)
+    public function updateBinCoordinates(BinInfo $binInfo)
     {
         $bin = Bin::select(['ID AS bin_id'])
             ->distinct()
