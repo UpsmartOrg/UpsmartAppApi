@@ -21,6 +21,10 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // Login route for ALL users, no authentication needed
     Route::post('/login', 'Auth\AuthController@login')->name('login.api');
 
+    // User route for ALL users, no authentication needed
+    Route::get('users/{user}', 'UserController@show');
+    Route::get('users/withroles/{user}', 'UserController@showWithRoles');
+
     // Information routes for ALL users, no authentication needed
     Route::get('information', 'InformationController@index');
     Route::get('information/{information}', 'InformationController@show');
@@ -54,10 +58,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
         // User routes for authenticated users
         Route::get('users', 'UserController@index');
-        Route::get('users', 'UserController@index');
-        Route::get('users/withroles', 'UserController@indexWithRoles');
-        Route::get('users/{user}', 'UserController@show');
-        Route::get('users/withroles/{user}', 'UserController@showWithRoles');
         Route::put('users/{user}', 'UserController@update');
 
         // Routes only accessible by authenticated users with communcation role
@@ -111,6 +111,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         // Routes only accessible by authenticated users with admin role
         Route::middleware('api.admin')->group(function () {
             // User routes for admin
+            Route::get('users', 'UserController@index');
+            Route::get('users/withroles', 'UserController@indexWithRoles');
             Route::post('users', 'UserController@store');
             Route::post('users/withroles', 'UserController@storeWithRoles');
             Route::put('users/withroles/{user}', 'UserController@updateWithRoles');
