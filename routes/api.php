@@ -26,6 +26,19 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     // Survey routes
     Route::get('surveys', 'SurveyController@index');
     Route::get('surveys/get/{survey}', 'SurveyController@show');
+    // Information Routes
+    Route::get('information', 'InformationController@index');
+    Route::get('information/get/{information}', 'InformationController@show');
+    // OpenQuestion Routes
+    Route::get('open_questions/from-survey/{surveyID}', 'OpenQuestionController@showFromSurvey');
+    Route::get('open_questions/quick-survey', 'OpenQuestionController@showQuickSurvey');
+    // MultiplechoiceQuestion Routes
+    Route::get('multi_questions/from-survey/{surveyID}', 'MultiplechoiceQuestionController@showFromSurvey');
+    Route::get('multi_questions/quick-survey', 'MultiplechoiceQuestionController@showQuickSurvey');
+    // MultipleChoiceItem Routes
+    Route::get('multi_items/from-question/{questionID}', 'MultiplechoiceItemController@showFromQuestion');
+    // Answer routes
+    Route::post('answers', 'AnswerController@store');
 
     // Authenticated routes
     Route::middleware('auth:sanctum')->group(function () {
@@ -36,20 +49,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         // User routes
         Route::get('users', 'UserController@index');
         Route::put('users/{user}', 'UserController@update');
-        // OpenQuestion Routes
-        Route::get('open_questions/from-survey/{surveyID}', 'OpenQuestionController@showFromSurvey');
-        Route::get('open_questions/quick-survey', 'OpenQuestionController@showQuickSurvey');
-        // MultiplechoiceQuestion Routes
-        Route::get('multi_questions/from-survey/{surveyID}', 'MultiplechoiceQuestionController@showFromSurvey');
-        Route::get('multi_questions/quick-survey', 'MultiplechoiceQuestionController@showQuickSurvey');
-        // MultipleChoiceItem Routes
-        Route::get('multi_items/from-question/{questionID}', 'MultiplechoiceItemController@showFromQuestion');
-        // Answer routes
-        Route::post('answers', 'AnswerController@store');
-        // Information Routes
-        Route::get('information', 'InformationController@index');
-        Route::get('information/get/{information}', 'InformationController@show');
-
         // Routes available for authenticated users with role trash
         Route::middleware('api.trash')->group(function () {
             // Bin routes
