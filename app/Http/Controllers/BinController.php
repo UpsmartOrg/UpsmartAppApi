@@ -14,7 +14,7 @@ class BinController extends Controller
             ->distinct()
             ->get()
             ->toArray();
-        
+
         $returnList = [];
         foreach ($binList as $bin) {
             $bin = Bin::where('ID', $bin['bin_id'])
@@ -26,20 +26,5 @@ class BinController extends Controller
         }
 
         return $returnList;
-    }
-
-    public function indexAllBins()
-    {
-        return Bin::all();
-    }
-
-    public function test()
-    {
-        return 'Test successfully completed!';
-    }
-
-    public function show(Bin $bin)
-    {
-        return $bin;
     }
 }
