@@ -63,7 +63,7 @@ return [
             ]) : [],
         ],
 
-        'bins_old' => [
+        'mysql_bins' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST_BIN'),
             'port' => env('DB_PORT', '3306'),
