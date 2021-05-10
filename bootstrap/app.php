@@ -17,7 +17,7 @@ $app = new Illuminate\Foundation\Application(
 
 // fix path for Artisan scripts
 $app->bind('path.public', function() {
-    return base_path().'/public_html';
+    return base_path().'/public';
 });
 
 /*
